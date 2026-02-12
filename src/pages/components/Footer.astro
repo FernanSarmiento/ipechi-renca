@@ -1,0 +1,146 @@
+<footer>
+    <div class="footer-container">
+        
+        <div class="columna">
+            <h3>IPECHI RENCA</h3>
+            <p>Una iglesia de puertas abiertas, predicando el evangelio y sirviendo a la comunidad con amor y fe.</p>
+        </div>
+
+        <div class="columna">
+            <h3>Navegación</h3>
+            <ul class="links">
+                <li><a href="/">Inicio</a></li>
+                <li><a href="#nosotros">Nuestra Historia</a></li>
+                <li><a href="#horarios">Horarios</a></li>
+                <li><a href="#ubicacion">Cómo Llegar</a></li>
+            </ul>
+        </div>
+
+        <div class="columna">
+            <h3>Contacto</h3>
+            <p class="dato">📍 Los Guindos #1927, Renca</p>
+            <p class="dato">📱 +56 9 1234 5678</p>
+            <p class="dato">✉️ ipechile.renca@gmail.com</p>
+        </div>
+
+    </div>
+
+    <div class="barra-final">
+        <p>&copy; 2026 Iglesia Pentecostal de Chile - Renca.</p>
+        <p class="dev">
+            Desarrollado con <span class="corazon">❤</span> por 
+            <a href="https://github.com/fernansarmiento" target="_blank">Fernando Sarmiento Cortez</a>
+        </p>
+    </div>
+</footer>
+
+<style>
+    footer {
+        background-color: #111827; /* Mismo color oscuro que la sección de contacto */
+        color: #d1d5db; /* Gris claro para leer fácil */
+        padding-top: 60px;
+        font-size: 0.95rem;
+    }
+
+    .footer-container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: flex;
+        flex-wrap: wrap; /* Para que baje en celular */
+        justify-content: space-between;
+        gap: 40px;
+        padding-bottom: 40px;
+        border-bottom: 1px solid #374151; /* Línea separadora sutil */
+    }
+
+    /* ESTILOS DE COLUMNAS */
+    .columna {
+        flex: 1;
+        min-width: 250px; /* Ancho mínimo para que no se aplasten */
+    }
+
+    h3 {
+        color: white;
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    p {
+        line-height: 1.6;
+        color: #9ca3af;
+    }
+
+    /* ENLACES (Links) */
+    .links {
+        list-style: none; /* Quitar puntitos */
+        padding: 0;
+        margin: 0;
+    }
+
+    .links li {
+        margin-bottom: 10px;
+    }
+
+    .links a {
+        color: #d1d5db;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+
+    .links a:hover {
+        color: skyblue; /* Color al pasar el mouse */
+        padding-left: 5px; /* Pequeño movimiento a la derecha */
+    }
+
+    /* DATOS DE CONTACTO */
+    .dato {
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    /* BARRA FINAL */
+    .barra-final {
+        background-color: #0f172a; /* Un poco más oscuro que el footer */
+        padding: 20px;
+        text-align: center;
+        font-size: 0.85rem;
+        color: #6b7280;
+    }
+
+    .barra-final p {
+        margin: 5px 0;
+    }
+
+    /* Estilo para tu nombre */
+    .dev a {
+        color: #9ca3af;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .dev a:hover {
+        color: white;
+        text-decoration: underline;
+    }
+
+    .corazon {
+        color: #ef4444; /* Corazón rojo */
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+        .footer-container {
+            flex-direction: column; /* Una columna debajo de la otra */
+            text-align: center;
+        }
+
+        .links a:hover {
+            padding-left: 0; /* Sin movimiento en celular */
+        }
+    }
+</style>

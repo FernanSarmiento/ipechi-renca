@@ -1,0 +1,84 @@
+<section id="ubicacion">
+  <h2>Nuestra Ubicación</h2>
+
+  <div class="contenedor">
+    
+    <div class="direccion">
+      <h3>Visítanos</h3>
+      
+      <div class="info-row">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon-map" width="30" height="30" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+          <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+          <path d="M17.657 16.657l-4.243 4.243a3 3 0 0 1 -4.242 0l-4.244 -4.243a8 8 0 1 1 11.314 0z" />
+        </svg>
+        <p>Los Guindos #1927, Renca</p>
+      </div>
+    </div>
+
+    <div class="mapa">
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3330.639966838384!2d-70.6976549242981!3d-33.40656469521361!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c679a61f67f1%3A0x6a1f3c3b0c6a0c0!2sLos%20Guindos%201927%2C%20Renca%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1ses-419!2scl!4v1700000000000!5m2!1ses-419!2scl" 
+        width="100%" 
+        height="450" 
+        style="border:0;" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  #ubicacion {
+    padding: 60px 20px;
+    background-color: #ffffff;
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: #333;
+  }
+
+  .contenedor {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    background-color: #f9fafb;
+    padding: 40px;
+    border-radius: 20px;
+    text-align: left;
+  }
+
+  .direccion { flex: 1; }
+  .mapa { flex: 1; border-radius: 15px; overflow: hidden; }
+
+  .direccion h3 {
+    color: #2563eb;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    font-weight: 700;
+  }
+
+  .info-row { display: flex; align-items: center; gap: 15px; }
+  .icon-map { color: #d97706; flex-shrink: 0; }
+  .info-row p { font-size: 1.5rem; font-weight: bold; color: #1f2937; margin: 0; }
+
+  @media (max-width: 768px) {
+    .contenedor {
+      flex-direction: column; /* Celular: Uno abajo del otro */
+      padding: 20px;
+      gap: 30px;
+    }
+    
+    .direccion, .mapa { width: 100%; }
+  }
+</style>

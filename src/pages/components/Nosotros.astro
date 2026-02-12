@@ -1,0 +1,150 @@
+<section id="nosotros">
+    <div class="contenedor-nosotros">
+        
+        <div class="texto">
+            <span class="etiqueta">Nuestra Historia</span>
+            <h2>Un legado de Fe en Renca</h2>
+            
+            <p>
+                La Iglesia Pentecostal de Chile en Los Guindos nació con la visión de predicar el Evangelio en nuestra comuna. 
+                Lo que comenzó como un pequeño grupo de oración, Dios lo ha transformado hoy en una congregación vibrante y activa.
+            </p>
+            
+            <p>
+                Mantenemos firmes los principios bíblicos y nuestra doctrina pentecostal, enfocándonos en la predicación del Evangelio, la ayuda y la formación de nuevas generaciones. 
+                Nuestro compromiso es servir a Dios con integridad y pasión.
+            </p>
+            
+            <div class="firma">
+                <p class="cargo">Pastores Gobernantes:</p>
+                <p class="nombre">Pr. Jaime Hernández y Pra. Johanna Sánchez</p>
+            </div>
+        </div>
+
+        <div class="imagen-container">
+            <img src="/images/fondo-nosotros.jpg" alt="Historia de la iglesia">
+            
+            <div class="marco-decorativo"></div>
+        </div>
+
+    </div>
+</section>
+
+<style>
+    #nosotros {
+        padding: 100px 20px;
+        background-color: #fff;
+        overflow: hidden;
+    }
+
+    .contenedor-nosotros {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        gap: 70px; /* Más separación para que se vea elegante */
+    }
+
+    /* TEXTO */
+    .texto {
+        flex: 1;
+    }
+
+    .etiqueta {
+        color: #2563eb; /* Azul corporativo */
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 0.85rem;
+        display: block;
+        margin-bottom: 15px;
+    }
+
+    h2 {
+        font-size: 2.5rem; /* Título grande */
+        color: #111827;
+        margin-bottom: 25px;
+        line-height: 1.1;
+        font-weight: 700;
+    }
+
+    p {
+        color: #4b5563;
+        font-size: 1.1rem;
+        line-height: 1.8;
+        margin-bottom: 20px;
+    }
+
+    /* FIRMA */
+    .firma {
+        margin-top: 40px;
+        padding-top: 25px;
+        border-top: 1px solid #e5e7eb;
+    }
+
+    .cargo {
+        font-size: 0.9rem;
+        color: #6b7280;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    .nombre {
+        font-size: 1.3rem;
+        color: #111827;
+        font-weight: bold;
+        font-style: italic; /* Letra cursiva para que parezca firma */
+        margin: 0;
+    }
+
+    /* IMAGEN */
+    .imagen-container {
+        flex: 1;
+        position: relative;
+    }
+
+    img {
+        width: 100%;
+        border-radius: 12px;
+        box-shadow: 0 20px 40px -10px rgba(0,0,0,0.2); /* Sombra fuerte */
+        position: relative;
+        z-index: 2;
+        object-fit: cover;
+        height: 450px; /* Altura fija para que la foto se vea imponente */
+    }
+
+    .marco-decorativo {
+        position: absolute;
+        top: 30px;
+        right: -30px; /* Desplazado a la derecha */
+        bottom: -30px;
+        left: 30px;
+        background-color: #f3f4f6; /* Color gris suave */
+        border-radius: 12px;
+        z-index: 1;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+        .contenedor-nosotros {
+            flex-direction: column;
+            text-align: center; /* En celular todo centrado */
+        }
+
+        .firma {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .marco-decorativo {
+            display: none; /* En celular ocultamos el marco para simplificar */
+        }
+        
+        img {
+            height: 300px; /* Foto más chica en celular */
+        }
+    }
+</style>
