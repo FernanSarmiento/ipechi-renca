@@ -1,43 +1,37 @@
-# Astro Starter Kit: Minimal
+# ⛪ Iglesia Pentecostal de Chile - Renca
 
-```sh
-npm create astro@latest -- --template minimal
-```
+Bienvenido al repositorio oficial del sitio web de la **Iglesia Pentecostal de Chile en Renca**.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+![Estado](https://img.shields.io/badge/Estado-En_Producción-green)
+![Tecnología](https://img.shields.io/badge/Hecho_con-Astro_&_Tailwind-blue)
 
-## 🚀 Project Structure
+## 🌟 Características del Sitio
 
-Inside of your Astro project, you'll see the following folders and files:
+- **Inicio:** Bienvenida y versículo del día.
+- **Horarios:** Información clara de nuestros cultos (Martes, Jueves y Domingo).
+- **Ubicación:** Integración con Google Maps para fácil llegada.
+- **Historia:** Reseña histórica de nuestra amada iglesia.
+- **Galería:** Fotos de actividades y eventos especiales.
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+## 🛠️ Tecnologías
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+El sitio está construido pensando en la velocidad y el SEO:
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+- **[Astro](https://astro.build/):** Framework principal para rendimiento óptimo.
+- **Tailwind CSS:** Para un diseño moderno y responsive.
+- **HTML5 & JavaScript:** Estructura e interactividad.
 
-Any static assets, like images, can be placed in the `public/` directory.
+## 🚀 Instalación Local
 
-## 🧞 Commands
+Si deseas colaborar o probar el sitio en tu máquina:
 
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+1. Clona el repositorio:
+   ```bash
+   git clone [https://github.com/FernanSarmiento/ipechi-renca.git](https://github.com/FernanSarmiento/ipechi-renca.git)
+2. Instala las dependencias:
+    ```bash
+    npm install
+3. Inicia el servidor:
+    ``bash
+    npm run dev
+Hecho con ❤️ para la obra de Dios
