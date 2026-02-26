@@ -6,13 +6,11 @@
             <h2>Un legado de Fe en Renca</h2>
             
             <p>
-                La Iglesia Pentecostal de Chile en Los Guindos nació con la visión de predicar el Evangelio en nuestra comuna. 
-                Lo que comenzó como un pequeño grupo de oración, Dios lo ha transformado hoy en una congregación vibrante y activa.
+                La Iglesia Pentecostal de Chile en Los Guindos nació con la visión de predicar el Evangelio en nuestra comuna. Lo que comenzó como un pequeño grupo de oración, Dios lo ha transformado hoy en una congregación vibrante y activa.
             </p>
             
             <p>
-                Mantenemos firmes los principios bíblicos y nuestra doctrina pentecostal, enfocándonos en la predicación del Evangelio, la ayuda y la formación de nuevas generaciones. 
-                Nuestro compromiso es servir a Dios con integridad y pasión.
+                Mantenemos firmes los principios bíblicos y nuestra doctrina pentecostal, enfocándonos en la predicación del Evangelio, la ayuda y la formación de nuevas generaciones. Nuestro compromiso es servir a Dios con integridad y pasión.
             </p>
             
             <div class="firma">
@@ -33,7 +31,8 @@
 <style>
     #nosotros {
         padding: 100px 20px;
-        background-color: #fff;
+        /* Hacemos el fondo transparente para que use el azul oscuro global */
+        background-color: transparent; 
         overflow: hidden;
     }
 
@@ -42,7 +41,7 @@
         margin: 0 auto;
         display: flex;
         align-items: center;
-        gap: 70px; /* Más separación para que se vea elegante */
+        gap: 70px; 
     }
 
     /* TEXTO */
@@ -51,25 +50,26 @@
     }
 
     .etiqueta {
-        color: #2563eb; /* Azul corporativo */
+        color: #22d3ee; /* Cyan Neón */
         font-weight: 800;
         text-transform: uppercase;
         letter-spacing: 2px;
         font-size: 0.85rem;
         display: block;
         margin-bottom: 15px;
+        text-shadow: 0 0 10px rgba(34, 211, 238, 0.3); /* Brillo suave */
     }
 
     h2 {
-        font-size: 2.5rem; /* Título grande */
-        color: #111827;
+        font-size: 2.5rem;
+        color: #ffffff; /* Texto Blanco */
         margin-bottom: 25px;
         line-height: 1.1;
         font-weight: 700;
     }
 
     p {
-        color: #4b5563;
+        color: #94a3b8; /* Gris azulado claro para buena lectura */
         font-size: 1.1rem;
         line-height: 1.8;
         margin-bottom: 20px;
@@ -79,12 +79,12 @@
     .firma {
         margin-top: 40px;
         padding-top: 25px;
-        border-top: 1px solid #e5e7eb;
+        border-top: 1px solid #1e293b; /* Línea separadora oscura */
     }
 
     .cargo {
         font-size: 0.9rem;
-        color: #6b7280;
+        color: #64748b; /* Gris medio */
         text-transform: uppercase;
         letter-spacing: 1px;
         margin-bottom: 5px;
@@ -93,9 +93,9 @@
 
     .nombre {
         font-size: 1.3rem;
-        color: #111827;
+        color: #e2e8f0; /* Blanco casi puro */
         font-weight: bold;
-        font-style: italic; /* Letra cursiva para que parezca firma */
+        font-style: italic; 
         margin: 0;
     }
 
@@ -108,29 +108,43 @@
     img {
         width: 100%;
         border-radius: 12px;
-        box-shadow: 0 20px 40px -10px rgba(0,0,0,0.2); /* Sombra fuerte */
+        /* Sombra oscura y borde fino para que encaje en el modo oscuro */
+        box-shadow: 0 15px 30px rgba(0,0,0,0.5); 
+        border: 1px solid #1e293b;
         position: relative;
         z-index: 2;
         object-fit: cover;
-        height: 450px; /* Altura fija para que la foto se vea imponente */
+        height: 450px; 
+        filter: brightness(0.8); /* Ligeramente oscura por defecto */
+        transition: all 0.4s ease;
     }
 
+    /* Efecto al pasar el cursor sobre la foto */
+    img:hover {
+        filter: brightness(1.0);
+        border-color: #22d3ee;
+        box-shadow: 0 0 25px rgba(34, 211, 238, 0.2);
+    }
+
+    /* El marco ahora tiene estilo Tech (Borde neón) en lugar de un bloque gris */
     .marco-decorativo {
         position: absolute;
         top: 30px;
-        right: -30px; /* Desplazado a la derecha */
+        right: -30px; 
         bottom: -30px;
         left: 30px;
-        background-color: #f3f4f6; /* Color gris suave */
+        background-color: transparent; 
+        border: 2px solid #22d3ee; /* Borde cyan */
         border-radius: 12px;
         z-index: 1;
+        opacity: 0.3; /* Semitransparente para que sea sutil */
     }
 
     /* RESPONSIVE */
     @media (max-width: 768px) {
         .contenedor-nosotros {
             flex-direction: column;
-            text-align: center; /* En celular todo centrado */
+            text-align: center; 
         }
 
         .firma {
@@ -140,11 +154,11 @@
         }
 
         .marco-decorativo {
-            display: none; /* En celular ocultamos el marco para simplificar */
+            display: none; 
         }
         
         img {
-            height: 300px; /* Foto más chica en celular */
+            height: 300px;
         }
     }
 </style>

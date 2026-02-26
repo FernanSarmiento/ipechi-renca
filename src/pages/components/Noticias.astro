@@ -1,9 +1,19 @@
 <section id="noticias">
-    <h2>Nuestras Redes</h2>
+    <div class="header-noticias">
+        <span class="etiqueta">Conéctate</span>
+        <h2>Nuestras Redes</h2>
+    </div>
     
     <div class="media-grid">
-        <div class="facebook-feed">
-            <h3>📢 Últimas Noticias</h3>
+        
+        <div class="card-social facebook-feed">
+            <div class="titulo-red">
+                <span class="icono-fb">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
+                </span>
+                <h3>Últimas Noticias</h3>
+            </div>
+            
             <div class="iframe-container">
                 <iframe 
                     src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FIpechiRencaOficial&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" 
@@ -19,13 +29,18 @@
             <p class="nota-pie">Síguenos en Facebook para ver fotos y eventos en tiempo real.</p>
         </div>
 
-        <div class="youtube-feed">
-            <h3>🎥 Último Mensaje</h3>
+        <div class="card-social youtube-feed">
+            <div class="titulo-red">
+                <span class="icono-yt">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                </span>
+                <h3>Último Mensaje</h3>
+            </div>
+            
             <div class="video-wrapper">
                 <iframe 
-                    width="100%" 
-                    height="315" 
-                    src="https://www.youtube.com/embed/yLr_df3lh6k?si=G4lZ3gN0T4MRJqP0&amp;controls=0" 
+                    width="560" 
+                    height="315" src="https://www.youtube.com/embed/xHLIQtIk9es?si=HOQiE3zYMahHnZNh" 
                     title="YouTube video player" 
                     frameborder="0" 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
@@ -33,6 +48,7 @@
                     allowfullscreen>
                 </iframe>
             </div>
+            
             <div class="btn-container">
                 <a href="https://www.youtube.com/@ipechirenca/featured" target="_blank" class="btn-youtube">
                     Ver canal completo
@@ -44,8 +60,34 @@
 </section>
 
 <style>
-    #noticias { padding: 60px 20px; background-color: #fff; text-align: center; }
-    h2 { font-size: 2.5rem; color: #111827; margin-bottom: 50px; }
+    #noticias { 
+        padding: 100px 20px; 
+        background-color: transparent; /* Hereda el fondo oscuro global */
+        text-align: center; 
+    }
+
+    .header-noticias {
+        margin-bottom: 60px;
+    }
+
+    .etiqueta {
+        color: #22d3ee;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 0.85rem;
+        display: block;
+        margin-bottom: 10px;
+        text-shadow: 0 0 10px rgba(34, 211, 238, 0.3);
+    }
+
+    h2 { 
+        font-size: 3rem; 
+        color: #ffffff; 
+        margin: 0; 
+        font-weight: 800;
+        text-transform: uppercase;
+    }
     
     .media-grid {
         display: flex;
@@ -56,38 +98,116 @@
         margin: 0 auto;
     }
 
-    .facebook-feed, .youtube-feed {
+    /* TARJETAS GLASSMORPHISM */
+    .card-social {
         flex: 1;
-        min-width: 300px; /* Ancho mínimo para que no se aplaste */
+        min-width: 320px; 
         max-width: 500px; 
+        background-color: rgba(30, 41, 59, 0.4); 
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255,255,255,0.05);
+        border-radius: 24px;
+        padding: 30px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        transition: transform 0.4s ease, border-color 0.4s ease;
+        display: flex;
+        flex-direction: column;
     }
 
-    /* FACEBOOK */
-    .facebook-feed { background: #f0f2f5; padding: 20px; border-radius: 12px; }
-    .iframe-container { background: white; border-radius: 8px; overflow: hidden; display: flex; justify-content: center; }
+    /* Efecto al pasar el mouse por la tarjeta entera */
+    .card-social:hover {
+        transform: translateY(-5px);
+        border-color: rgba(34, 211, 238, 0.3);
+        box-shadow: 0 20px 40px rgba(34, 211, 238, 0.1);
+    }
+
+    .titulo-red {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        margin-bottom: 25px;
+    }
+
+    .titulo-red h3 {
+        color: #ffffff;
+        font-size: 1.6rem;
+        margin: 0;
+        font-weight: 700;
+    }
+
+    .icono-fb { color: #3b82f6; filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.6)); }
+    .icono-yt { color: #ef4444; filter: drop-shadow(0 0 8px rgba(239, 68, 68, 0.6)); }
+
+    /* CONTENEDOR FACEBOOK */
+    .iframe-container { 
+        background: #ffffff;
+        border-radius: 12px; 
+        overflow: hidden; 
+        display: flex; 
+        justify-content: center;
+        border: 2px solid rgba(255,255,255,0.1);
+    }
+
+    .nota-pie {
+        color: #94a3b8;
+        font-size: 0.95rem;
+        margin-top: 20px;
+    }
     
-    /* YOUTUBE */
+    /* CONTENEDOR YOUTUBE */
     .video-wrapper {
         position: relative;
-        padding-bottom: 56.25%; /* Ratio 16:9 */
+        padding-bottom: 56.25%; /* Ratio 16:9 perfecto */
         height: 0;
         overflow: hidden;
         border-radius: 12px;
         background: #000;
-        margin-bottom: 20px;
+        margin-bottom: 30px;
+        border: 2px solid rgba(255,255,255,0.1);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.5);
     }
-    .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+    .video-wrapper iframe { 
+        position: absolute; 
+        top: 0; left: 0; 
+        width: 100%; height: 100%; 
+    }
     
+    .btn-container {
+        margin-top: auto; /* Empuja el botón hacia abajo */
+    }
+
+    /* BOTÓN YOUTUBE NEÓN */
     .btn-youtube {
         display: inline-block;
-        background-color: #ef4444;
-        color: white;
-        padding: 10px 20px;
+        background-color: transparent;
+        color: #ef4444; /* Rojo YouTube */
+        padding: 12px 30px;
+        border: 2px solid #ef4444;
         border-radius: 50px;
         text-decoration: none;
         font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+        width: 100%;
+        box-sizing: border-box;
     }
 
-    /* Regla de oro para evitar desbordes */
+    .btn-youtube:hover {
+        background-color: #ef4444;
+        color: #ffffff;
+        box-shadow: 0 0 20px rgba(239, 68, 68, 0.5); /* Brillo Rojo Neón */
+        transform: scale(1.02);
+    }
+
     iframe { max-width: 100%; }
+
+    /* MODO CELULAR */
+    @media (max-width: 768px) {
+        #noticias { padding: 60px 10px; }
+        .card-social { padding: 20px 15px; }
+        h2 { font-size: 2.2rem; }
+    }
 </style>

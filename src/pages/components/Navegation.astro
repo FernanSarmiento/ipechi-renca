@@ -1,61 +1,100 @@
 <nav class="nav-links">
     <div class="links">
         <a href="/">Inicio</a>
+        <a href="#horarios">Horarios</a>
+        <a href="#ubicacion">Ubicación</a>
         <a href="#nosotros">Nosotros</a>
-        <a href="#noticias">Redes y Noticias</a>
+        <a href="#noticias">Redes</a>
         <a href="#contacto">Contacto</a>
     </div>
 </nav>
 
 <style>
     nav {
-        background-color: transparent; /* Fondo invisible */
+        background-color: transparent; 
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
-        z-index: 10;
-        
-        /* CORREGIDO: Padding normal para que no se aplaste */
-        padding: 20px 5%; 
-        box-sizing: border-box; /* Importante para que respete el ancho */
-
+        z-index: 100; /* Lo subimos para que siempre esté por encima de todo */
+        padding: 30px 5%; 
+        box-sizing: border-box; 
         display: flex;
-        justify-content: center; /* Centrado en pantallas grandes */
+        justify-content: center; 
         align-items: center;
     }
 
+    /* PÍLDORA DE CRISTAL (Glassmorphism) */
     .links {
         display: flex;
-        gap: 30px; /* Separación entre enlaces */
-        flex-wrap: wrap; /* Permite que bajen si no caben */
+        gap: 30px; 
+        flex-wrap: wrap; 
         justify-content: center;
+        background: rgba(30, 41, 59, 0.4); /* Fondo oscuro transparente */
+        backdrop-filter: blur(12px); /* Efecto desenfoque */
+        padding: 12px 35px;
+        border-radius: 50px; /* Bordes totalmente redondos */
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     }
 
     .links a {
         text-decoration: none;
-        color: white;
-        font-weight: 500;
-        font-size: 1.1rem;
-        transition: color 0.3s;
-        text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* Sombra para leer mejor sobre la foto */
+        color: #e2e8f0; /* Blanco apagado */
+        font-weight: 600;
+        font-size: 0.95rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+        position: relative; /* Necesario para la línea animada */
     }
 
+    /* LÍNEA ANIMADA NEÓN (Debajo del texto) */
+    .links a::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -5px;
+        left: 0;
+        background-color: #22d3ee; /* Cyan Neón */
+        transition: width 0.3s ease;
+        box-shadow: 0 0 8px rgba(34, 211, 238, 0.6);
+    }
+
+    /* HOVER: Al pasar el mouse */
     .links a:hover {
-        color: skyblue;
+        color: #22d3ee;
+        text-shadow: 0 0 8px rgba(34, 211, 238, 0.4);
+    }
+
+    /* La línea crece al 100% al hacer hover */
+    .links a:hover::after {
+        width: 100%;
     }
 
     /* RESPONSIVE: AJUSTE PARA CELULARES */
     @media (max-width: 768px) {
         nav {
-            padding: 15px; /* Menos espacio en celular */
-            position: relative; /* En celular, que no flote sobre la foto para no tapar */
-            background-color: #1f2937; /* Fondo oscuro en celular para que se lea */
+            padding: 15px; 
+            position: relative; /* En celular, que empuje el contenido hacia abajo */
+            background-color: #0b1120; /* Fondo azul extra oscuro */
+            border-bottom: 1px solid rgba(34, 211, 238, 0.2); /* Borde cyan sutil */
         }
         
         .links {
-            gap: 15px;
-            font-size: 0.9rem;
+            gap: 15px; 
+            padding: 10px 5px;
+            /* En celular quitamos la píldora para ahorrar espacio */
+            background: transparent; 
+            backdrop-filter: none;
+            border: none;
+            box-shadow: none;
+        }
+
+        .links a {
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
         }
     }
 </style>

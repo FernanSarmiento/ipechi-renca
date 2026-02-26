@@ -1,173 +1,242 @@
 <section id="horarios">
-    <h2>Nuestros Servicios</h2>
+    <div class="header-horarios">
+        <span class="etiqueta">Agéndate</span>
+        <h2>Nuestros Servicios</h2>
+    </div>
 
     <div class="horarios-grid">
         
-        <div class="tarjeta martes">
+        <div class="tarjeta">
+            <img src="/images/fondo-local.jpg" alt="Culto Local" class="fondo-img">
+            <div class="overlay"></div>
+            
+            <div class="contenido">
                 <div class="icon">📖</div>
                 <h3>Martes</h3>
-                <p class="hora">20:00 hrs</p>
-                <p class="actividad">Culto Local Sigisfredo</p>
+                <div class="info-bloque">
+                    <p class="hora">20:00 hrs</p>
+                    <p class="actividad">Culto Local Sigisfredo</p>
+                </div>
             </div>
+        </div>
 
-            <div class="tarjeta jueves">
+        <div class="tarjeta">
+            <img src="/images/uno.jpg" alt="Culto General" class="fondo-img">
+            <div class="overlay"></div>
+            
+            <div class="contenido">
                 <div class="icon">🔥</div>
                 <h3>Jueves</h3>
-                <p class="hora">20:00 hrs</p>
-                <p class="actividad">Culto General</p>
+                <div class="info-bloque">
+                    <p class="hora">20:00 hrs</p>
+                    <p class="actividad">Culto General</p>
+                </div>
             </div>
+        </div>
 
-            <div class="tarjeta domingo">
+        <div class="tarjeta destacado">
+            <img src="/images/fondo-domingo1.jpg" alt="Reunión Dominical" class="fondo-img">
+            <div class="overlay"></div>
+            
+            <div class="contenido">
                 <div class="icon">🙌</div>
                 <h3>Domingo</h3>
-                <div class="bloque">
+                
+                <div class="info-bloque">
                     <p class="hora">10:00 hrs</p>
                     <p class="actividad">Escuela Dominical</p>
                 </div>
-                <div class="bloque">
+                
+                <div class="separador"></div>
+                
+                <div class="info-bloque">
                     <p class="hora">11:00 hrs</p>
                     <p class="actividad">Culto General</p>
                 </div>
             </div>
+        </div>
 
     </div>
 </section>
 
 <style>
-    /* 1. LA SECCIÓN GENERAL */
+    /* 1. SECCIÓN GENERAL */
     #horarios {
-        padding: 80px 20px; /* Espacio arriba/abajo y a los lados */
-        background-color: #f3f4f6; /* Un gris muy clarito para diferenciar del fondo blanco */
-        text-align: center; /* Centramos el título */
+        padding: 100px 20px;
+        background-color: transparent; /* Fondo hereda el azul oscuro global */
+        text-align: center;
+        position: relative;
+    }
+
+    .header-horarios {
+        margin-bottom: 60px;
+    }
+
+    .etiqueta {
+        color: #22d3ee;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 0.85rem;
+        display: block;
+        margin-bottom: 10px;
+        text-shadow: 0 0 10px rgba(34, 211, 238, 0.3);
     }
 
     h2 {
-        font-size: 2.5rem;
-        margin-bottom: 50px;
-        color: #111827;
-        font-weight: 800;
-    }
-
-    /* 2. LA REJILLA (EL PADRE) */
-    .horarios-grid {
-        display: flex; /* Poner lado a lado */
-        justify-content: center; /* Centrar el grupo en la pantalla */
-        gap: 30px; /* Espacio entre tarjetas */
-        max-width: 1100px; /* Que no se estiren demasiado en pantallas gigantes */
-        margin: 0 auto; /* Centrar el bloque */
-    }
-
-    /* 3. LAS TARJETAS (LOS HIJOS) */
-    .tarjeta {
-        
-        padding: 40px 30px;
-        border-radius: 16px;
-        flex: 1;
-        min-width: 250px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Sombra un poco más oscura */
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        
-        /* TEXTO BLANCO PARA QUE SE LEA SOBRE LA FOTO */
-        color: white; 
-        text-align: center;
-        
-        /* PREPARAR PARA FONDO */
-        background-size: cover; /* La foto cubre todo */
-        background-position: center; /* La foto se centra */
-        position: relative; /* Necesario para efectos */
-        overflow: hidden; /* Que nada se salga de los bordes redondos */
-    }
-    
-    .tarjeta h3 {
-        color: #fff; /* Título blanco */
-        font-size: 1.8rem;
-        text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* Sombrita para leer mejor */
-    }
-
-    .tarjeta .hora {
-        color: #60a5fa;
-        font-weight: bold;
-    }
-
-    .tarjeta .actividad {
-        color: #e5e7eb; /* Gris muy clarito casi blanco */
-    }
-
-    .tarjeta .icon {
         font-size: 3rem;
-        text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        color: #ffffff;
+        font-weight: 800;
+        margin: 0;
+        text-transform: uppercase;
     }
 
-    .martes {
-        /* Foto de Biblia o Estudio */
-        background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
-        url('/images/fondo-local.jpg');
+    /* 2. REJILLA */
+    .horarios-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        max-width: 1200px;
+        margin: 0 auto;
+        align-items: stretch; /* Para que todas midan lo mismo */
     }
 
-    .jueves {
-        /* Foto de Adoración / Fuego */
-        background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.6)), 
-        url('/images/uno.jpg');
+    /* 3. TARJETAS */
+    .tarjeta {
+        position: relative;
+        border-radius: 20px;
+        overflow: hidden;
+        border: 1px solid rgba(255,255,255,0.05);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        transition: transform 0.4s ease, border-color 0.4s ease;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end; /* Contenido hacia abajo */
+        min-height: 400px; /* Altura mínima elegante */
     }
 
-    .domingo {
-        /* Foto de Iglesia / Comunidad */
-        background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.6)), 
-        url('/images/fondo-domingo1.jpg');
+    /* Tarjeta Dominical Destacada */
+    .tarjeta.destacado {
+        border-color: rgba(34, 211, 238, 0.3);
     }
 
-    /* Efecto Hover opcional: Aclarar un poco la imagen al pasar el mouse */
+    /* IMÁGENES DE FONDO REALES (No background-image) */
+    .fondo-img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 0;
+        transition: transform 0.6s ease;
+    }
+
+    /* Filtro Oscuro sobre la foto */
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to top, rgba(15,23,42,1) 10%, rgba(15,23,42,0.6) 60%, rgba(15,23,42,0.3) 100%);
+        z-index: 1;
+    }
+
+    /* HOVER (Efecto al pasar el mouse) */
     .tarjeta:hover {
         transform: translateY(-10px);
-        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+        border-color: #22d3ee;
+        box-shadow: 0 20px 40px rgba(34, 211, 238, 0.2);
     }
 
-    /* Efecto al pasar el mouse: Subir y más sombra */
-    .tarjeta:hover {
-        transform: translateY(-10px); /* Flota hacia arriba */
-        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        border-top: 5px solid skyblue; /* Aparece una línea azul arriba */
+    .tarjeta:hover .fondo-img {
+        transform: scale(1.1); /* Zoom a la foto */
     }
 
-    /* ESTILOS DE TEXTO DENTRO DE LA TARJETA */
+    /* 4. CONTENIDO DENTRO DE LA TARJETA */
+    .contenido {
+        position: relative;
+        z-index: 2;
+        padding: 40px 30px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        justify-content: flex-end; /* Empuja el texto hacia abajo */
+    }
+
     .icon {
-        font-size: 3rem;
-        margin-bottom: 15px;
+        font-size: 3.5rem;
+        margin-bottom: 10px;
+        filter: drop-shadow(0 0 10px rgba(34, 211, 238, 0.4));
     }
 
     h3 {
-        font-size: 1.5rem;
-        color: #1f2937;
-        margin-bottom: 15px;
+        font-size: 2rem;
+        color: #ffffff;
+        margin: 0 0 20px 0;
         text-transform: uppercase;
-        letter-spacing: 1px;
+        letter-spacing: 2px;
+        font-weight: 800;
+        text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    }
+
+    .info-bloque {
+        background-color: rgba(255, 255, 255, 0.05); /* Cajita de cristal sutil */
+        backdrop-filter: blur(5px);
+        padding: 15px;
+        border-radius: 12px;
+        border: 1px solid rgba(255,255,255,0.05);
     }
 
     .hora {
-        font-size: 1.25rem;
-        font-weight: bold;
-        color: #2563eb; /* Azul bonito */
-        margin: 0;
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: #22d3ee; /* Cyan Neón */
+        margin: 0 0 5px 0;
+        text-shadow: 0 0 10px rgba(34, 211, 238, 0.3);
     }
 
     .actividad {
-        color: #4b5563; /* Gris oscuro */
-        margin-top: 5px;
+        color: #e2e8f0;
         font-size: 1.1rem;
+        margin: 0;
+        font-weight: 500;
     }
 
-    .bloque {
-        margin-bottom: 15px; /* Separar los dos horarios del domingo */
+    .separador {
+        height: 1px;
+        width: 50%;
+        background-color: rgba(255,255,255,0.1);
+        margin: 15px auto;
     }
 
-    /* 4. RESPONSIVE (CELULAR) */
+    /* 5. RESPONSIVE (CELULAR) */
     @media (max-width: 768px) {
         .horarios-grid {
-            flex-direction: column; /* Poner una debajo de la otra */
+            grid-template-columns: 1fr; /* Una columna */
+            padding: 0 10px;
         }
         
         #horarios {
-            padding: 50px 20px;
+            padding: 60px 10px;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+        }
+
+        .tarjeta {
+            min-height: 350px;
+        }
+
+        .icon {
+            font-size: 3rem;
+        }
+
+        h3 {
+            font-size: 1.6rem;
         }
     }
 </style>

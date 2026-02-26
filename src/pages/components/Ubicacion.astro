@@ -1,5 +1,8 @@
 <section id="ubicacion">
-  <h2>Nuestra Ubicación</h2>
+  <div class="header-ubicacion">
+      <span class="etiqueta">Cómo Llegar</span>
+      <h2>Nuestra Ubicación</h2>
+  </div>
 
   <div class="contenedor">
     
@@ -7,24 +10,31 @@
       <h3>Visítanos</h3>
       
       <div class="info-row">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon-map" width="30" height="30" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-          <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
-          <path d="M17.657 16.657l-4.243 4.243a3 3 0 0 1 -4.242 0l-4.244 -4.243a8 8 0 1 1 11.314 0z" />
-        </svg>
-        <p>Los Guindos #1927, Renca</p>
+        <div class="icon-wrapper">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon-map" width="35" height="35" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+              <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+              <path d="M17.657 16.657l-4.243 4.243a3 3 0 0 1 -4.242 0l-4.244 -4.243a8 8 0 1 1 11.314 0z" />
+            </svg>
+        </div>
+        
+        <div class="text-dir">
+            <p>Los Guindos #1927</p>
+            <span>Renca, Santiago</span>
+        </div>
       </div>
     </div>
 
     <div class="mapa">
       <iframe 
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3330.639966838384!2d-70.6976549242981!3d-33.40656469521361!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c679a61f67f1%3A0x6a1f3c3b0c6a0c0!2sLos%20Guindos%201927%2C%20Renca%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1ses-419!2scl!4v1700000000000!5m2!1ses-419!2scl" 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3330.419074092497!2d-70.7028169!3d-33.3986064!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c7a42b930b5b%3A0xcabf35d2d0b5b8d2!2sLos%20Guindos%201927%2C%20Renca%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1ses!2scl!4v1700000000000!5m2!1ses!2scl" 
         width="100%" 
         height="450" 
         style="border:0;" 
         allowfullscreen="" 
         loading="lazy" 
-        referrerpolicy="no-referrer-when-downgrade">
+        referrerpolicy="no-referrer-when-downgrade"
+        class="mapa-iframe">
       </iframe>
     </div>
 
@@ -33,15 +43,31 @@
 
 <style>
   #ubicacion {
-    padding: 60px 20px;
-    background-color: #ffffff;
+    padding: 80px 20px;
+    background-color: transparent;
     text-align: center;
+  }
+
+  .header-ubicacion {
+    margin-bottom: 50px;
+  }
+
+  .etiqueta {
+    color: #22d3ee; /* Cyan Neón */
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.85rem;
+    display: block;
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px rgba(34, 211, 238, 0.3); /* Brillo suave */
   }
 
   h2 {
     font-size: 2.5rem;
-    margin-bottom: 40px;
-    color: #333;
+    color: #ffffff;
+    margin: 0;
+    font-weight: 700;
   }
 
   .contenedor {
@@ -50,35 +76,89 @@
     display: flex;
     align-items: center;
     gap: 50px;
-    background-color: #f9fafb;
+    /* Efecto Tarjeta de Cristal (Glassmorphism) */
+    background-color: rgba(30, 41, 59, 0.4); 
+    backdrop-filter: blur(10px);
     padding: 40px;
-    border-radius: 20px;
+    border-radius: 24px;
+    border: 1px solid rgba(255,255,255,0.05);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
     text-align: left;
   }
 
-  .direccion { flex: 1; }
-  .mapa { flex: 1; border-radius: 15px; overflow: hidden; }
+  .direccion { 
+      flex: 1; 
+  }
+  
+  .mapa { 
+      flex: 1.5; 
+      border-radius: 16px; 
+      overflow: hidden; 
+      border: 2px solid #22d3ee; /* Borde Cyan */
+      box-shadow: 0 0 25px rgba(34, 211, 238, 0.15); /* Resplandor */
+  }
+
+  .mapa-iframe {
+    
+      filter: invert(90%) hue-rotate(180deg) brightness(85%) contrast(85%);
+      display: block; 
+  }
 
   .direccion h3 {
-    color: #2563eb;
+    color: #94a3b8; /* Gris claro */
     text-transform: uppercase;
     font-size: 0.9rem;
-    letter-spacing: 1px;
-    margin-bottom: 15px;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
     font-weight: 700;
   }
 
-  .info-row { display: flex; align-items: center; gap: 15px; }
-  .icon-map { color: #d97706; flex-shrink: 0; }
-  .info-row p { font-size: 1.5rem; font-weight: bold; color: #1f2937; margin: 0; }
+  .info-row { 
+      display: flex; 
+      align-items: center; 
+      gap: 20px; 
+  }
+  
+  .icon-wrapper {
+      background-color: rgba(34, 211, 238, 0.1);
+      padding: 15px;
+      border-radius: 50%;
+      border: 1px solid rgba(34, 211, 238, 0.3);
+      display: flex;
+  }
 
+  .icon-map { 
+      color: #22d3ee; 
+      flex-shrink: 0; 
+      filter: drop-shadow(0 0 5px rgba(34, 211, 238, 0.5));
+  }
+  
+  .text-dir p { 
+      font-size: 1.8rem; 
+      font-weight: 800; 
+      color: #ffffff; 
+      margin: 0 0 5px 0; 
+  }
+
+  .text-dir span {
+      color: #22d3ee; 
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+  }
+
+  /* MODO CELULAR */
   @media (max-width: 768px) {
     .contenedor {
-      flex-direction: column; /* Celular: Uno abajo del otro */
-      padding: 20px;
+      flex-direction: column; 
+      padding: 25px;
       gap: 30px;
     }
     
     .direccion, .mapa { width: 100%; }
+
+    .text-dir p {
+        font-size: 1.4rem;
+    }
   }
 </style>
