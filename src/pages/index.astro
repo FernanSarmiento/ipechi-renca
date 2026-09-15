@@ -4,9 +4,11 @@ import Navegation from "./components/Navegation.astro";
 import Ubicacion from "./components/Ubicacion.astro";
 import Horarios from "./components/Horarios.astro";
 import Noticias from "./components/Noticias.astro";
+import Galeria from "./components/Galeria.astro";
 import Calendario from "./components/Calendario.astro";
 import Contacto from "./components/Contacto.astro";
 import Nosotros from "./components/Nosotros.astro";
+import BotonArriba from "./components/BotonArriba.astro";
 
 const titulo = "Iglesia Pentecostal de Chile - Renca";
 const descripcion = "Una iglesia de puertas abiertas en Los Guindos, Renca. Conoce nuestros horarios de culto, nuestra historia y súmate a nuestra comunidad de fe.";
@@ -35,7 +37,7 @@ const GA_MEASUREMENT_ID = import.meta.env.GA_MEASUREMENT_ID;
 		<meta property="og:image" content={imagenSocial} />
 		<meta property="og:locale" content="es_CL" />
 
-		<!-- Twitter Card -->
+		<!-- Twitter Card (por si comparten el link ahí también) -->
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:title" content={titulo} />
 		<meta name="twitter:description" content={descripcion} />
@@ -88,9 +90,11 @@ const GA_MEASUREMENT_ID = import.meta.env.GA_MEASUREMENT_ID;
     <Ubicacion />
     <Nosotros />
     <Noticias />
+    <Galeria />
     <Calendario />
     <Contacto />
 	  <Footer />
+	  <BotonArriba />
 	</body>
 </html>
 
