@@ -4,8 +4,15 @@ import Navegation from "./components/Navegation.astro";
 import Ubicacion from "./components/Ubicacion.astro";
 import Horarios from "./components/Horarios.astro";
 import Noticias from "./components/Noticias.astro";
+import Calendario from "./components/Calendario.astro";
 import Contacto from "./components/Contacto.astro";
 import Nosotros from "./components/Nosotros.astro";
+
+const titulo = "Iglesia Pentecostal de Chile - Renca";
+const descripcion = "Una iglesia de puertas abiertas en Los Guindos, Renca. Conoce nuestros horarios de culto, nuestra historia y súmate a nuestra comunidad de fe.";
+const urlSitio = "https://ipechirenca.cl";
+const imagenSocial = `${urlSitio}/images/logo%20ipechi.png`;
+const GA_MEASUREMENT_ID = import.meta.env.GA_MEASUREMENT_ID;
 ---
 
 <html lang="es">
@@ -14,11 +21,41 @@ import Nosotros from "./components/Nosotros.astro";
 		<link rel="icon" type="image/png" href="/favicon-ipechi.png" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Iglesia Pentecostal de Chile de Renca</title>
-		
+		<title>{titulo}</title>
+
+		<!-- SEO básico -->
+		<meta name="description" content={descripcion} />
+		<link rel="canonical" href={urlSitio} />
+
+		<!-- Open Graph (WhatsApp, Facebook, Instagram) -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={urlSitio} />
+		<meta property="og:title" content={titulo} />
+		<meta property="og:description" content={descripcion} />
+		<meta property="og:image" content={imagenSocial} />
+		<meta property="og:locale" content="es_CL" />
+
+		<!-- Twitter Card -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={titulo} />
+		<meta name="twitter:description" content={descripcion} />
+		<meta name="twitter:image" content={imagenSocial} />
+
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+		{GA_MEASUREMENT_ID && (
+			<>
+				<script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}></script>
+				<script define:vars={{ GA_MEASUREMENT_ID }}>
+					window.dataLayer = window.dataLayer || [];
+					function gtag() { dataLayer.push(arguments); }
+					gtag("js", new Date());
+					gtag("config", GA_MEASUREMENT_ID);
+				</script>
+			</>
+		)}
 	</head>
 	<body>
 		<Navegation />
@@ -51,6 +88,7 @@ import Nosotros from "./components/Nosotros.astro";
     <Ubicacion />
     <Nosotros />
     <Noticias />
+    <Calendario />
     <Contacto />
 	  <Footer />
 	</body>

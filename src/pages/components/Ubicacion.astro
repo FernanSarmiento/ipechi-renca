@@ -23,6 +23,15 @@
             <span>Renca, Santiago</span>
         </div>
       </div>
+
+      <div class="botones-llegar">
+        <a href="https://www.google.com/maps/dir/?api=1&destination=Los+Guindos+1927,+Renca,+Chile" target="_blank" class="btn-llegar btn-maps">
+          Google Maps
+        </a>
+        <a href="https://waze.com/ul?q=Los%20Guindos%201927%2C%20Renca%2C%20Chile&navigate=yes" target="_blank" class="btn-llegar btn-waze">
+          Waze
+        </a>
+      </div>
     </div>
 
     <div class="mapa">
@@ -145,6 +154,50 @@
       font-size: 1.1rem;
       font-weight: 600;
       letter-spacing: 1px;
+  }
+
+  .botones-llegar {
+      display: flex;
+      gap: 15px;
+      margin-top: 30px;
+  }
+
+  .btn-llegar {
+      flex: 1;
+      text-align: center;
+      text-decoration: none;
+      padding: 12px 20px;
+      border-radius: 50px;
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      box-sizing: border-box;
+  }
+
+  .btn-maps {
+      color: #22d3ee;
+      border: 2px solid #22d3ee;
+  }
+
+  .btn-maps:hover {
+      background-color: #22d3ee;
+      color: #0f172a;
+      box-shadow: 0 0 20px rgba(34, 211, 238, 0.5);
+      transform: scale(1.05);
+  }
+
+  .btn-waze {
+      color: #7dd3fc;
+      border: 2px solid #7dd3fc;
+  }
+
+  .btn-waze:hover {
+      background-color: #7dd3fc;
+      color: #0f172a;
+      box-shadow: 0 0 20px rgba(125, 211, 252, 0.5);
+      transform: scale(1.05);
   }
 
   /* MODO CELULAR */

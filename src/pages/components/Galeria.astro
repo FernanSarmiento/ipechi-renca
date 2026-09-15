@@ -1,0 +1,197 @@
+---
+// --- Fotos de la galería ---
+const fotos = [
+	{ src: "/images/galeria/foto-1.webp", alt: "TEDEUM Comunal" },
+	{ src: "/images/galeria/foto-2.webp", alt: "Dia de la Niñez" },
+	{ src: "/images/galeria/foto-3.webp", alt: "Actividad Dorcas" },
+	{ src: "/images/galeria/foto-4.webp", alt: "Alabanza" },
+	{ src: "/images/galeria/foto-5.webp", alt: "Navidad" },
+	{ src: "/images/galeria/foto-6.webp", alt: "Danza" },
+];
+---
+
+<section id="galeria">
+	<div class="header-galeria">
+		<span class="etiqueta">Momentos</span>
+		<h2>Galería de Fotos</h2>
+	</div>
+
+	<div class="grid-galeria" id="grid-galeria">
+		{fotos.map((foto) => (
+			<button type="button" class="foto-item" data-full={foto.src} data-alt={foto.alt}>
+				<img src={foto.src} alt={foto.alt} loading="lazy" />
+			</button>
+		))}
+	</div>
+</section>
+
+<div class="lightbox" id="lightbox">
+	<button type="button" class="lightbox-cerrar" id="lightbox-cerrar" aria-label="Cerrar">×</button>
+	<img src="" alt="" id="lightbox-img" />
+</div>
+
+<style>
+	#galeria {
+		padding: 100px 20px;
+		background-color: transparent;
+		text-align: center;
+	}
+
+	.header-galeria {
+		margin-bottom: 50px;
+	}
+
+	.etiqueta {
+		color: #22d3ee;
+		font-weight: 800;
+		text-transform: uppercase;
+		letter-spacing: 2px;
+		font-size: 0.85rem;
+		display: block;
+		margin-bottom: 10px;
+		text-shadow: 0 0 10px rgba(34, 211, 238, 0.3);
+	}
+
+	h2 {
+		font-size: 3rem;
+		color: #ffffff;
+		margin: 0;
+		font-weight: 800;
+		text-transform: uppercase;
+	}
+
+	.grid-galeria {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 20px;
+		max-width: 1100px;
+		margin: 0 auto;
+	}
+
+	.foto-item {
+		padding: 0;
+		border: 2px solid rgba(255,255,255,0.08);
+		border-radius: 16px;
+		overflow: hidden;
+		cursor: pointer;
+		background: #000;
+		aspect-ratio: 1;
+		transition: border-color 0.3s ease, transform 0.3s ease;
+	}
+
+	.foto-item img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+		transition: transform 0.4s ease, filter 0.4s ease;
+		filter: brightness(0.85);
+	}
+
+	.foto-item:hover {
+		border-color: #22d3ee;
+		transform: translateY(-4px);
+		box-shadow: 0 10px 25px rgba(34, 211, 238, 0.2);
+	}
+
+	.foto-item:hover img {
+		transform: scale(1.08);
+		filter: brightness(1);
+	}
+
+	/* LIGHTBOX */
+	.lightbox {
+		display: none;
+		position: fixed;
+		inset: 0;
+		background: rgba(5, 5, 5, 0.92);
+		backdrop-filter: blur(6px);
+		z-index: 1000;
+		align-items: center;
+		justify-content: center;
+		padding: 30px;
+		box-sizing: border-box;
+	}
+
+	.lightbox.activo {
+		display: flex;
+	}
+
+	.lightbox img {
+		max-width: 100%;
+		max-height: 100%;
+		border-radius: 12px;
+		box-shadow: 0 0 40px rgba(34, 211, 238, 0.2);
+	}
+
+	.lightbox-cerrar {
+		position: absolute;
+		top: 25px;
+		right: 30px;
+		background: transparent;
+		border: 2px solid #22d3ee;
+		color: #22d3ee;
+		width: 44px;
+		height: 44px;
+		border-radius: 50%;
+		font-size: 1.5rem;
+		line-height: 1;
+		cursor: pointer;
+		transition: all 0.3s ease;
+	}
+
+	.lightbox-cerrar:hover {
+		background-color: #22d3ee;
+		color: #0f172a;
+		box-shadow: 0 0 15px rgba(34, 211, 238, 0.5);
+	}
+
+	@media (max-width: 768px) {
+		#galeria { padding: 60px 10px; }
+		h2 { font-size: 2.2rem; }
+		.grid-galeria {
+			grid-template-columns: repeat(2, 1fr);
+			gap: 12px;
+		}
+		.lightbox-cerrar {
+			top: 15px;
+			right: 15px;
+		}
+	}
+</style>
+
+<script>
+	const grid = document.getElementById("grid-galeria");
+	const lightbox = document.getElementById("lightbox");
+	const lightboxImg = document.getElementById("lightbox-img");
+	const btnCerrar = document.getElementById("lightbox-cerrar");
+
+	function abrirLightbox(src, alt) {
+		lightboxImg.setAttribute("src", src);
+		lightboxImg.setAttribute("alt", alt);
+		lightbox.classList.add("activo");
+	}
+
+	function cerrarLightbox() {
+		lightbox.classList.remove("activo");
+		lightboxImg.setAttribute("src", "");
+	}
+
+	if (grid && lightbox && lightboxImg && btnCerrar) {
+		grid.addEventListener("click", (e) => {
+			const item = e.target.closest(".foto-item");
+			if (!item) return;
+			abrirLightbox(item.dataset.full, item.dataset.alt);
+		});
+
+		btnCerrar.addEventListener("click", cerrarLightbox);
+
+		lightbox.addEventListener("click", (e) => {
+			if (e.target === lightbox) cerrarLightbox();
+		});
+
+		window.addEventListener("keydown", (e) => {
+			if (e.key === "Escape") cerrarLightbox();
+		});
+	}
+</script>

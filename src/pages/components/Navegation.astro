@@ -1,10 +1,19 @@
 <nav class="nav-links">
-    <div class="links">
+    <div class="nav-mobile-bar">
+        <span class="nav-logo-text">Ipechi Renca</span>
+        <button type="button" class="menu-toggle" id="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
+            <span class="menu-icon"></span>
+        </button>
+    </div>
+
+    <div class="links" id="nav-links">
         <a href="/">Inicio</a>
         <a href="#horarios">Horarios</a>
         <a href="#ubicacion">Ubicación</a>
         <a href="#nosotros">Nosotros</a>
         <a href="#noticias">Redes</a>
+        <a href="#galeria">Galería</a>
+        <a href="#calendario">Calendario</a>
         <a href="#contacto">Contacto</a>
     </div>
 </nav>
@@ -22,6 +31,10 @@
         display: flex;
         justify-content: center; 
         align-items: center;
+    }
+
+    .nav-mobile-bar {
+        display: none;
     }
 
     /* PÍLDORA DE CRISTAL (Glassmorphism) */
@@ -73,28 +86,141 @@
         width: 100%;
     }
 
-    /* RESPONSIVE: AJUSTE PARA CELULARES */
+    /* RESPONSIVE: MENÚ HAMBURGUESA EN CELULAR */
     @media (max-width: 768px) {
         nav {
-            padding: 15px; 
+            padding: 15px 20px;
+            flex-direction: column;
+            align-items: stretch;
             position: relative; /* En celular, que empuje el contenido hacia abajo */
             background-color: #0b1120; /* Fondo azul extra oscuro */
             border-bottom: 1px solid rgba(34, 211, 238, 0.2); /* Borde cyan sutil */
         }
-        
+
+        .nav-mobile-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .nav-logo-text {
+            color: #ffffff;
+            font-weight: 800;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .menu-toggle {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            border: 2px solid #22d3ee;
+            background-color: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .menu-icon,
+        .menu-icon::before,
+        .menu-icon::after {
+            display: block;
+            width: 18px;
+            height: 2px;
+            border-radius: 2px;
+            background-color: #22d3ee;
+            transition: all 0.3s ease;
+        }
+
+        .menu-icon {
+            position: relative;
+        }
+
+        .menu-icon::before,
+        .menu-icon::after {
+            content: '';
+            position: absolute;
+            left: 0;
+        }
+
+        .menu-icon::before {
+            top: -6px;
+        }
+
+        .menu-icon::after {
+            top: 6px;
+        }
+
+        /* Transforma la hamburguesa en una X cuando el menú está abierto */
+        .menu-toggle.abierto .menu-icon {
+            background-color: transparent;
+        }
+
+        .menu-toggle.abierto .menu-icon::before {
+            top: 0;
+            transform: rotate(45deg);
+        }
+
+        .menu-toggle.abierto .menu-icon::after {
+            top: 0;
+            transform: rotate(-45deg);
+        }
+
         .links {
-            gap: 15px; 
-            padding: 10px 5px;
-            /* En celular quitamos la píldora para ahorrar espacio */
-            background: transparent; 
+            flex-direction: column;
+            align-items: stretch;
+            gap: 0;
+            max-height: 0;
+            overflow: hidden;
+            padding: 0;
+            margin-top: 0;
+            background: transparent;
             backdrop-filter: none;
             border: none;
             box-shadow: none;
+            transition: max-height 0.35s ease, margin-top 0.35s ease;
+        }
+
+        .links.abierto {
+            max-height: 500px;
+            margin-top: 15px;
         }
 
         .links a {
-            font-size: 0.8rem;
-            letter-spacing: 0.5px;
+            padding: 14px 5px;
+            font-size: 0.9rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .links a:last-child {
+            border-bottom: none;
         }
     }
 </style>
+
+<script>
+    const boton = document.getElementById("menu-toggle");
+    const menu = document.getElementById("nav-links");
+
+    if (boton && menu) {
+        boton.addEventListener("click", () => {
+            const abierto = menu.classList.toggle("abierto");
+            boton.classList.toggle("abierto", abierto);
+            boton.setAttribute("aria-expanded", String(abierto));
+        });
+
+        // Cierra el menú al hacer clic en cualquier link (navegación por ancla)
+        menu.querySelectorAll("a").forEach((link) => {
+            link.addEventListener("click", () => {
+                menu.classList.remove("abierto");
+                boton.classList.remove("abierto");
+                boton.setAttribute("aria-expanded", "false");
+            });
+        });
+    }
+</script>
