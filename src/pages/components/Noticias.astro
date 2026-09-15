@@ -4,6 +4,7 @@ const CHANNEL_ID = "UCaYwKGwfWfOMbIbzUOMgY7Q";
 // El "playlist de subidas" de cualquier canal es el mismo ID cambiando UC por UU
 const UPLOADS_PLAYLIST_ID = "UU" + CHANNEL_ID.slice(2);
 const YOUTUBE_API_KEY = import.meta.env.YOUTUBE_API_KEY;
+console.log("DEBUG - YOUTUBE_API_KEY presente:", Boolean(YOUTUBE_API_KEY));
 
 let videos = [];
 

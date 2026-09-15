@@ -2,6 +2,8 @@
 // --- Configuración de Google Calendar ---
 const API_KEY = import.meta.env.GOOGLE_CALENDAR_API_KEY;
 const CALENDAR_ID = import.meta.env.GOOGLE_CALENDAR_ID;
+console.log("DEBUG - GOOGLE_CALENDAR_API_KEY presente:", Boolean(API_KEY));
+console.log("DEBUG - GOOGLE_CALENDAR_ID presente:", Boolean(CALENDAR_ID));
 
 let allEvents = [];
 
