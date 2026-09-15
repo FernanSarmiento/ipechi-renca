@@ -2,8 +2,6 @@
 // --- Configuración de Google Calendar ---
 const API_KEY = import.meta.env.GOOGLE_CALENDAR_API_KEY;
 const CALENDAR_ID = import.meta.env.GOOGLE_CALENDAR_ID;
-console.log("DEBUG - GOOGLE_CALENDAR_API_KEY presente:", Boolean(API_KEY));
-console.log("DEBUG - GOOGLE_CALENDAR_ID presente:", Boolean(CALENDAR_ID));
 
 let allEvents = [];
 
@@ -15,11 +13,28 @@ const COLOR_MAP = {
 };
 const COLOR_DEFAULT = "#22d3ee"; // si el evento no tiene color asignado en Google Calendar
 
-// Convierte la fecha de un evento de Google Calendar a un objeto Date en hora local,
-// evitando el corrimiento de día que ocurre al parsear fechas "todo el día" como UTC.
+const ZONA_HORARIA = "America/Santiago";
+
+// Dado un instante (Date), devuelve un Date "de calendario" (sin hora) que representa
+// ese mismo día pero según la zona horaria de Chile — así el resultado es el mismo
+// sin importar en qué huso horario esté corriendo el servidor que genera el sitio.
+function obtenerDiaEnChile(instante) {
+	const formatter = new Intl.DateTimeFormat("en-CA", {
+		timeZone: ZONA_HORARIA,
+		year: "numeric",
+		month: "2-digit",
+		day: "2-digit",
+	});
+	const [anio, mes, dia] = formatter.format(instante).split("-").map(Number);
+	return new Date(anio, mes - 1, dia);
+}
+
+// Convierte la fecha de un evento de Google Calendar al día que le corresponde en Chile,
+// evitando el corrimiento de día que ocurre al parsear fechas "todo el día" como UTC,
+// o al calcular la hora en un servidor que corre en otro huso horario (como Netlify).
 function parsearFechaEvento(item) {
 	if (item.start.dateTime) {
-		return new Date(item.start.dateTime);
+		return obtenerDiaEnChile(new Date(item.start.dateTime));
 	}
 	const [anio, mes, dia] = item.start.date.split("-").map(Number);
 	return new Date(anio, mes - 1, dia);
@@ -30,6 +45,7 @@ function formatearHoraEvento(item) {
 	return new Date(item.start.dateTime).toLocaleTimeString("es-CL", {
 		hour: "2-digit",
 		minute: "2-digit",
+		timeZone: ZONA_HORARIA,
 	});
 }
 
