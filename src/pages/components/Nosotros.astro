@@ -1,7 +1,7 @@
 <section id="nosotros">
     <div class="contenedor-nosotros">
         
-        <div class="texto">
+        <div class="texto reveal">
             <span class="etiqueta">Nuestra Historia</span>
             <h2>Un legado de Fe en Renca</h2>
             
@@ -19,7 +19,7 @@
             </div>
         </div>
 
-        <div class="imagen-container">
+        <div class="imagen-container reveal" style="transition-delay: 0.15s;">
             <img src="/images/fondo-nosotros.webp" alt="Historia de la iglesia">
             
             <div class="marco-decorativo"></div>
@@ -31,7 +31,6 @@
 <style>
     #nosotros {
         padding: 100px 20px;
-        /* Hacemos el fondo transparente para que use el azul oscuro global */
         background-color: transparent; 
         overflow: hidden;
     }
@@ -44,47 +43,45 @@
         gap: 70px; 
     }
 
-    /* TEXTO */
     .texto {
         flex: 1;
     }
 
     .etiqueta {
-        color: #22d3ee; /* Cyan Neón */
+        color: #22d3ee;
         font-weight: 800;
         text-transform: uppercase;
         letter-spacing: 2px;
         font-size: 0.85rem;
         display: block;
         margin-bottom: 15px;
-        text-shadow: 0 0 10px rgba(34, 211, 238, 0.3); /* Brillo suave */
+        text-shadow: 0 0 10px rgba(34, 211, 238, 0.3);
     }
 
     h2 {
         font-size: 2.5rem;
-        color: #ffffff; /* Texto Blanco */
+        color: #ffffff;
         margin-bottom: 25px;
         line-height: 1.1;
         font-weight: 700;
     }
 
     p {
-        color: #94a3b8; /* Gris azulado claro para buena lectura */
+        color: #94a3b8;
         font-size: 1.1rem;
         line-height: 1.8;
         margin-bottom: 20px;
     }
 
-    /* FIRMA */
     .firma {
         margin-top: 40px;
         padding-top: 25px;
-        border-top: 1px solid #1e293b; /* Línea separadora oscura */
+        border-top: 1px solid #1e293b;
     }
 
     .cargo {
         font-size: 0.9rem;
-        color: #64748b; /* Gris medio */
+        color: #64748b;
         text-transform: uppercase;
         letter-spacing: 1px;
         margin-bottom: 5px;
@@ -93,13 +90,12 @@
 
     .nombre {
         font-size: 1.3rem;
-        color: #e2e8f0; /* Blanco casi puro */
+        color: #e2e8f0;
         font-weight: bold;
         font-style: italic; 
         margin: 0;
     }
 
-    /* IMAGEN */
     .imagen-container {
         flex: 1;
         position: relative;
@@ -108,25 +104,24 @@
     img {
         width: 100%;
         border-radius: 12px;
-        /* Sombra oscura y borde fino para que encaje en el modo oscuro */
         box-shadow: 0 15px 30px rgba(0,0,0,0.5); 
         border: 1px solid #1e293b;
         position: relative;
         z-index: 2;
         object-fit: cover;
         height: 450px; 
-        filter: brightness(0.8); /* Ligeramente oscura por defecto */
+        filter: brightness(0.8);
         transition: all 0.4s ease;
     }
 
-    /* Efecto al pasar el cursor sobre la foto */
-    img:hover {
-        filter: brightness(1.0);
-        border-color: #22d3ee;
-        box-shadow: 0 0 25px rgba(34, 211, 238, 0.2);
+    @media (hover: hover) and (pointer: fine) {
+        img:hover {
+            filter: brightness(1.0);
+            border-color: #22d3ee;
+            box-shadow: 0 0 25px rgba(34, 211, 238, 0.2);
+        }
     }
 
-    /* El marco ahora tiene estilo Tech (Borde neón) en lugar de un bloque gris */
     .marco-decorativo {
         position: absolute;
         top: 30px;
@@ -134,13 +129,12 @@
         bottom: -30px;
         left: 30px;
         background-color: transparent; 
-        border: 2px solid #22d3ee; /* Borde cyan */
+        border: 2px solid #22d3ee;
         border-radius: 12px;
         z-index: 1;
-        opacity: 0.3; /* Semitransparente para que sea sutil */
+        opacity: 0.3;
     }
 
-    /* RESPONSIVE */
     @media (max-width: 768px) {
         .contenedor-nosotros {
             flex-direction: column;

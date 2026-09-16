@@ -1,5 +1,4 @@
 ---
-// --- Fotos de la galería ---
 const fotos = [
 	{ src: "/images/galeria/foto-1.webp", alt: "TEDEUM Comunal" },
 	{ src: "/images/galeria/foto-2.webp", alt: "Dia de la Niñez" },
@@ -17,8 +16,14 @@ const fotos = [
 	</div>
 
 	<div class="grid-galeria" id="grid-galeria">
-		{fotos.map((foto) => (
-			<button type="button" class="foto-item" data-full={foto.src} data-alt={foto.alt}>
+		{fotos.map((foto, i) => (
+			<button
+				type="button"
+				class="foto-item reveal"
+				data-full={foto.src}
+				data-alt={foto.alt}
+				style={`transition-delay: ${(i % 3) * 0.1}s;`}
+			>
 				<img src={foto.src} alt={foto.alt} loading="lazy" />
 			</button>
 		))}
@@ -88,18 +93,29 @@ const fotos = [
 		filter: brightness(0.85);
 	}
 
-	.foto-item:hover {
+	@media (hover: hover) and (pointer: fine) {
+		.foto-item:hover {
+			border-color: #22d3ee;
+			transform: translateY(-4px);
+			box-shadow: 0 10px 25px rgba(34, 211, 238, 0.2);
+		}
+
+		.foto-item:hover img {
+			transform: scale(1.08);
+			filter: brightness(1);
+		}
+	}
+
+	.foto-item:active {
 		border-color: #22d3ee;
-		transform: translateY(-4px);
 		box-shadow: 0 10px 25px rgba(34, 211, 238, 0.2);
 	}
 
-	.foto-item:hover img {
-		transform: scale(1.08);
+	.foto-item:active img {
+		transform: scale(1.04);
 		filter: brightness(1);
 	}
 
-	/* LIGHTBOX */
 	.lightbox {
 		display: none;
 		position: fixed;
@@ -140,10 +156,18 @@ const fotos = [
 		transition: all 0.3s ease;
 	}
 
-	.lightbox-cerrar:hover {
+	@media (hover: hover) and (pointer: fine) {
+		.lightbox-cerrar:hover {
+			background-color: #22d3ee;
+			color: #0f172a;
+			box-shadow: 0 0 15px rgba(34, 211, 238, 0.5);
+		}
+	}
+
+	.lightbox-cerrar:active {
 		background-color: #22d3ee;
 		color: #0f172a;
-		box-shadow: 0 0 15px rgba(34, 211, 238, 0.5);
+		transform: scale(0.92);
 	}
 
 	@media (max-width: 768px) {

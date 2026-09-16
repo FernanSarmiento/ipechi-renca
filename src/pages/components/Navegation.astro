@@ -25,7 +25,7 @@
         top: 0;
         left: 0;
         width: 100%;
-        z-index: 100; /* Lo subimos para que siempre esté por encima de todo */
+        z-index: 100;
         padding: 30px 5%; 
         box-sizing: border-box; 
         display: flex;
@@ -37,23 +37,22 @@
         display: none;
     }
 
-    /* PÍLDORA DE CRISTAL (Glassmorphism) */
     .links {
         display: flex;
         gap: 30px; 
         flex-wrap: wrap; 
         justify-content: center;
-        background: rgba(30, 41, 59, 0.4); /* Fondo oscuro transparente */
-        backdrop-filter: blur(12px); /* Efecto desenfoque */
+        background: rgba(30, 41, 59, 0.4);
+        backdrop-filter: blur(12px);
         padding: 12px 35px;
-        border-radius: 50px; /* Bordes totalmente redondos */
+        border-radius: 50px;
         border: 1px solid rgba(255, 255, 255, 0.1);
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     }
 
     .links a {
         text-decoration: none;
-        color: #e2e8f0; /* Blanco apagado */
+        color: #e2e8f0;
         font-weight: 600;
         font-size: 0.95rem;
         text-transform: uppercase;
@@ -62,7 +61,6 @@
         position: relative; /* Necesario para la línea animada */
     }
 
-    /* LÍNEA ANIMADA NEÓN (Debajo del texto) */
     .links a::after {
         content: '';
         position: absolute;
@@ -70,31 +68,34 @@
         height: 2px;
         bottom: -5px;
         left: 0;
-        background-color: #22d3ee; /* Cyan Neón */
+        background-color: #22d3ee;
         transition: width 0.3s ease;
         box-shadow: 0 0 8px rgba(34, 211, 238, 0.6);
     }
 
-    /* HOVER: Al pasar el mouse */
-    .links a:hover {
+    @media (hover: hover) and (pointer: fine) {
+        .links a:hover {
+            color: #22d3ee;
+            text-shadow: 0 0 8px rgba(34, 211, 238, 0.4);
+        }
+
+        .links a:hover::after {
+            width: 100%;
+        }
+    }
+
+    .links a:active {
         color: #22d3ee;
-        text-shadow: 0 0 8px rgba(34, 211, 238, 0.4);
     }
 
-    /* La línea crece al 100% al hacer hover */
-    .links a:hover::after {
-        width: 100%;
-    }
-
-    /* RESPONSIVE: MENÚ HAMBURGUESA EN CELULAR */
     @media (max-width: 768px) {
         nav {
             padding: 15px 20px;
             flex-direction: column;
             align-items: stretch;
-            position: relative; /* En celular, que empuje el contenido hacia abajo */
-            background-color: #0b1120; /* Fondo azul extra oscuro */
-            border-bottom: 1px solid rgba(34, 211, 238, 0.2); /* Borde cyan sutil */
+            position: relative;
+            background-color: #0b1120;
+            border-bottom: 1px solid rgba(34, 211, 238, 0.2);
         }
 
         .nav-mobile-bar {

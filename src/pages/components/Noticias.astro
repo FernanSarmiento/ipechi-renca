@@ -1,5 +1,4 @@
 ---
-// --- Configuración del carrusel de YouTube ---
 const CHANNEL_ID = "UCaYwKGwfWfOMbIbzUOMgY7Q";
 // El "playlist de subidas" de cualquier canal es el mismo ID cambiando UC por UU
 const UPLOADS_PLAYLIST_ID = "UU" + CHANNEL_ID.slice(2);
@@ -48,7 +47,7 @@ if (videos.length === 0) {
 
 	<div class="media-grid">
 
-		<div class="card-social facebook-feed">
+		<div class="card-social facebook-feed reveal">
 			<div class="titulo-red">
 				<span class="icono-fb">
 					<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
@@ -72,7 +71,7 @@ if (videos.length === 0) {
 			<p class="nota-pie">Síguenos en Facebook para ver fotos y eventos en tiempo real.</p>
 		</div>
 
-		<div class="card-social youtube-feed">
+		<div class="card-social youtube-feed reveal" style="transition-delay: 0.15s;">
 			<div class="titulo-red">
 				<span class="icono-yt">
 					<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
@@ -174,10 +173,12 @@ if (videos.length === 0) {
 		flex-direction: column;
 	}
 
-	.card-social:hover {
-		transform: translateY(-5px);
-		border-color: rgba(34, 211, 238, 0.3);
-		box-shadow: 0 20px 40px rgba(34, 211, 238, 0.1);
+	@media (hover: hover) and (pointer: fine) {
+		.card-social:hover {
+			transform: translateY(-5px);
+			border-color: rgba(34, 211, 238, 0.3);
+			box-shadow: 0 20px 40px rgba(34, 211, 238, 0.1);
+		}
 	}
 
 	.titulo-red {
@@ -218,7 +219,6 @@ if (videos.length === 0) {
 		margin-top: 20px;
 	}
 
-	/* CARRUSEL DE VIDEOS */
 	.carrusel-container {
 		position: relative;
 		overflow: hidden;
@@ -252,10 +252,18 @@ if (videos.length === 0) {
 		transition: all 0.3s ease;
 	}
 
-	.flecha-carrusel:hover {
+	@media (hover: hover) and (pointer: fine) {
+		.flecha-carrusel:hover {
+			background-color: #22d3ee;
+			color: #0f172a;
+			box-shadow: 0 0 15px rgba(34, 211, 238, 0.5);
+		}
+	}
+
+	.flecha-carrusel:active {
 		background-color: #22d3ee;
 		color: #0f172a;
-		box-shadow: 0 0 15px rgba(34, 211, 238, 0.5);
+		transform: translateY(-50%) scale(0.9);
 	}
 
 	.flecha-izq {
@@ -292,7 +300,14 @@ if (videos.length === 0) {
 		transition: border-color 0.3s ease, filter 0.3s ease;
 	}
 
-	.carrusel-item:hover img {
+	@media (hover: hover) and (pointer: fine) {
+		.carrusel-item:hover img {
+			border-color: #22d3ee;
+			filter: brightness(1.1);
+		}
+	}
+
+	.carrusel-item:active img {
 		border-color: #22d3ee;
 		filter: brightness(1.1);
 	}
@@ -328,11 +343,19 @@ if (videos.length === 0) {
 		box-sizing: border-box;
 	}
 
-	.btn-youtube:hover {
+	@media (hover: hover) and (pointer: fine) {
+		.btn-youtube:hover {
+			background-color: #ef4444;
+			color: #ffffff;
+			box-shadow: 0 0 20px rgba(239, 68, 68, 0.5);
+			transform: scale(1.02);
+		}
+	}
+
+	.btn-youtube:active {
 		background-color: #ef4444;
 		color: #ffffff;
-		box-shadow: 0 0 20px rgba(239, 68, 68, 0.5);
-		transform: scale(1.02);
+		transform: scale(0.98);
 	}
 
 	iframe { max-width: 100%; }

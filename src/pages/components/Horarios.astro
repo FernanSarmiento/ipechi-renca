@@ -6,7 +6,7 @@
 
     <div class="horarios-grid">
         
-        <div class="tarjeta">
+        <div class="tarjeta reveal">
             <img src="/images/fondo-local.webp" alt="Culto Local" class="fondo-img">
             <div class="overlay"></div>
             
@@ -20,7 +20,7 @@
             </div>
         </div>
 
-        <div class="tarjeta">
+        <div class="tarjeta reveal">
             <img src="/images/uno.webp" alt="Culto General" class="fondo-img">
             <div class="overlay"></div>
             
@@ -34,7 +34,7 @@
             </div>
         </div>
 
-        <div class="tarjeta destacado">
+        <div class="tarjeta destacado reveal">
             <img src="/images/fondo-domingo1.webp" alt="Reunión Dominical" class="fondo-img">
             <div class="overlay"></div>
             
@@ -60,10 +60,9 @@
 </section>
 
 <style>
-    /* 1. SECCIÓN GENERAL */
     #horarios {
         padding: 100px 20px;
-        background-color: transparent; /* Fondo hereda el azul oscuro global */
+        background-color: transparent;
         text-align: center;
         position: relative;
     }
@@ -91,17 +90,15 @@
         text-transform: uppercase;
     }
 
-    /* 2. REJILLA */
     .horarios-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 30px;
         max-width: 1200px;
         margin: 0 auto;
-        align-items: stretch; /* Para que todas midan lo mismo */
+        align-items: stretch;
     }
 
-    /* 3. TARJETAS */
     .tarjeta {
         position: relative;
         border-radius: 20px;
@@ -111,16 +108,14 @@
         transition: transform 0.4s ease, border-color 0.4s ease;
         display: flex;
         flex-direction: column;
-        justify-content: flex-end; /* Contenido hacia abajo */
-        min-height: 400px; /* Altura mínima elegante */
+        justify-content: flex-end;
+        min-height: 400px;
     }
 
-    /* Tarjeta Dominical Destacada */
     .tarjeta.destacado {
         border-color: rgba(34, 211, 238, 0.3);
     }
 
-    /* IMÁGENES DE FONDO REALES (No background-image) */
     .fondo-img {
         position: absolute;
         top: 0;
@@ -132,7 +127,6 @@
         transition: transform 0.6s ease;
     }
 
-    /* Filtro Oscuro sobre la foto */
     .overlay {
         position: absolute;
         top: 0;
@@ -143,18 +137,27 @@
         z-index: 1;
     }
 
-    /* HOVER (Efecto al pasar el mouse) */
-    .tarjeta:hover {
-        transform: translateY(-10px);
+    @media (hover: hover) and (pointer: fine) {
+        .tarjeta:hover {
+            transform: translateY(-10px);
+            border-color: #22d3ee;
+            box-shadow: 0 20px 40px rgba(34, 211, 238, 0.2);
+        }
+
+        .tarjeta:hover .fondo-img {
+            transform: scale(1.1);
+        }
+    }
+
+    .tarjeta:active {
         border-color: #22d3ee;
         box-shadow: 0 20px 40px rgba(34, 211, 238, 0.2);
     }
 
-    .tarjeta:hover .fondo-img {
-        transform: scale(1.1); /* Zoom a la foto */
+    .tarjeta:active .fondo-img {
+        transform: scale(1.05);
     }
 
-    /* 4. CONTENIDO DENTRO DE LA TARJETA */
     .contenido {
         position: relative;
         z-index: 2;
@@ -163,7 +166,7 @@
         display: flex;
         flex-direction: column;
         height: 100%;
-        justify-content: flex-end; /* Empuja el texto hacia abajo */
+        justify-content: flex-end;
     }
 
     .icon {
@@ -183,7 +186,7 @@
     }
 
     .info-bloque {
-        background-color: rgba(255, 255, 255, 0.05); /* Cajita de cristal sutil */
+        background-color: rgba(255, 255, 255, 0.05);
         backdrop-filter: blur(5px);
         padding: 15px;
         border-radius: 12px;
@@ -193,7 +196,7 @@
     .hora {
         font-size: 1.5rem;
         font-weight: 800;
-        color: #22d3ee; /* Cyan Neón */
+        color: #22d3ee;
         margin: 0 0 5px 0;
         text-shadow: 0 0 10px rgba(34, 211, 238, 0.3);
     }
@@ -212,10 +215,9 @@
         margin: 15px auto;
     }
 
-    /* 5. RESPONSIVE (CELULAR) */
     @media (max-width: 768px) {
         .horarios-grid {
-            grid-template-columns: 1fr; /* Una columna */
+            grid-template-columns: 1fr;
             padding: 0 10px;
         }
         

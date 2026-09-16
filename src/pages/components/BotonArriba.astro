@@ -34,10 +34,18 @@
 		transform: translateY(0);
 	}
 
-	.boton-arriba:hover {
+	@media (hover: hover) and (pointer: fine) {
+		.boton-arriba:hover {
+			background-color: #22d3ee;
+			color: #0f172a;
+			box-shadow: 0 0 20px rgba(34, 211, 238, 0.5);
+		}
+	}
+
+	.boton-arriba:active {
+		transform: scale(0.92);
 		background-color: #22d3ee;
 		color: #0f172a;
-		box-shadow: 0 0 20px rgba(34, 211, 238, 0.5);
 	}
 
 	@media (max-width: 768px) {

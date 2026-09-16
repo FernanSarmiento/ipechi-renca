@@ -1,13 +1,21 @@
 <footer>
+    <div class="footer-wave" aria-hidden="true">
+        <svg viewBox="0 0 1200 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0,40 C200,90 400,0 600,30 C800,60 1000,90 1200,30 L1200,80 L0,80 Z" fill="#050505"></path>
+        </svg>
+    </div>
+
+    <div class="footer-glow" aria-hidden="true"></div>
+
     <div class="footer-container">
-        
+
         <div class="columna branding">
             <div class="logo-container">
                 <img src="/images/logo ipechi.png" alt="Logo IPECHI Renca" class="footer-logo" />
             </div>
             <h3 class="cyan-title">IPECHI RENCA</h3>
             <p class="desc">Una iglesia de puertas abiertas, predicando el evangelio y sirviendo a la comunidad con amor y fe.</p>
-            
+
             <div class="social-icons">
                 <a href="https://www.facebook.com/IpechiRencaOficial/" target="_blank" aria-label="Facebook" class="social-circle">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
@@ -22,19 +30,39 @@
         </div>
 
         <div class="columna">
-            <h3 class="cyan-title">SECCIONES</h3>
+            <h3 class="cyan-title">Secciones</h3>
             <ul class="links">
                 <li><a href="/">Inicio</a></li>
                 <li><a href="#nosotros">📖 Nuestra Historia</a></li>
                 <li><a href="#horarios">⏱ Horarios</a></li>
                 <li><a href="#ubicacion">📍 Ubicación</a></li>
                 <li><a href="#noticias">📢 Redes</a></li>
+                <li><a href="#galeria">🖼️ Galería</a></li>
+                <li><a href="#calendario">🗓️ Calendario</a></li>
                 <li><a href="#contacto">💬 Contacto</a></li>
             </ul>
         </div>
 
         <div class="columna">
-            <h3 class="cyan-title">CONTACTO LOCAL</h3>
+            <h3 class="cyan-title">Próximo Culto</h3>
+            <ul class="horarios-mini">
+                <li>
+                    <span class="dia-mini">Martes</span>
+                    <span class="hora-mini-footer">20:00</span>
+                </li>
+                <li>
+                    <span class="dia-mini">Jueves</span>
+                    <span class="hora-mini-footer">20:00</span>
+                </li>
+                <li class="destacado-mini">
+                    <span class="dia-mini">Domingo</span>
+                    <span class="hora-mini-footer">10:00 y 11:00</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="columna">
+            <h3 class="cyan-title">Contacto Local</h3>
             <ul class="contact-info">
                 <li>
                     <span class="icon">📍</span>
@@ -61,28 +89,58 @@
 
 <style>
     footer {
+        position: relative;
         background-color: #050505;
-        color: #d1d5db; 
-        border-top: 2px solid #22d3ee; /* Línea cyan en el borde superior */
-        padding-top: 60px;
+        color: #d1d5db;
+        padding-top: 70px;
         font-size: 0.95rem;
+        overflow: hidden;
+    }
+
+    .footer-wave {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        line-height: 0;
+        transform: translateY(-99%);
+        z-index: 1;
+    }
+
+    .footer-wave svg {
+        display: block;
+        width: 100%;
+        height: 55px;
+    }
+
+    .footer-glow {
+        position: absolute;
+        top: -60px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 600px;
+        height: 320px;
+        background: radial-gradient(circle, rgba(34, 211, 238, 0.1) 0%, transparent 70%);
+        pointer-events: none;
+        z-index: 0;
     }
 
     .footer-container {
+        position: relative;
+        z-index: 2;
         max-width: 1200px;
         margin: 0 auto;
         padding: 0 20px;
         display: flex;
-        flex-wrap: wrap; 
+        flex-wrap: wrap;
         justify-content: space-between;
         gap: 50px;
         padding-bottom: 50px;
     }
 
-    /* ESTILOS DE COLUMNAS */
     .columna {
         flex: 1;
-        min-width: 250px; 
+        min-width: 220px;
     }
 
     .logo-container {
@@ -92,19 +150,41 @@
     .footer-logo {
         width: 80px;
         height: 80px;
-        border-radius: 50%; /* Logo redondo */
+        border-radius: 50%;
         background-color: white;
         padding: 5px;
         object-fit: contain;
+        box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.15), 0 0 25px rgba(34, 211, 238, 0.2);
+        transition: box-shadow 0.4s ease;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+        .footer-logo:hover {
+            box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.35), 0 0 35px rgba(34, 211, 238, 0.4);
+        }
     }
 
     .cyan-title {
+        position: relative;
+        display: inline-block;
         color: #22d3ee;
-        font-size: 1.1rem;
+        font-size: 1.05rem;
         font-weight: 800;
         text-transform: uppercase;
         letter-spacing: 1px;
         margin-bottom: 25px;
+        text-shadow: 0 0 12px rgba(34, 211, 238, 0.25);
+    }
+
+    .cyan-title::after {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        left: 0;
+        width: 30px;
+        height: 2px;
+        background: linear-gradient(90deg, #22d3ee, transparent);
+        border-radius: 2px;
     }
 
     .desc {
@@ -114,7 +194,6 @@
         font-size: 0.95rem;
     }
 
-    /* SOCIAL ICONS (Círculos) */
     .social-icons {
         display: flex;
         gap: 15px;
@@ -124,24 +203,35 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 40px;
-        height: 40px;
-        background-color: #1f2937; /* Círculo gris oscuro */
+        width: 42px;
+        height: 42px;
+        background-color: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
         border-radius: 50%;
         color: #9ca3af;
-        transition: all 0.3s ease;
+        transition: all 0.35s ease;
         text-decoration: none;
     }
 
-    .social-circle:hover {
-        background-color: #22d3ee;
-        color: #000;
-        transform: translateY(-3px);
+    @media (hover: hover) and (pointer: fine) {
+        .social-circle:hover {
+            background-color: #22d3ee;
+            border-color: #22d3ee;
+            color: #000;
+            transform: translateY(-4px) rotate(6deg);
+            box-shadow: 0 8px 20px rgba(34, 211, 238, 0.35);
+        }
     }
 
-    /* ENLACES (Secciones) */
+    .social-circle:active {
+        background-color: #22d3ee;
+        border-color: #22d3ee;
+        color: #000;
+        transform: scale(0.92);
+    }
+
     .links {
-        list-style: none; 
+        list-style: none;
         padding: 0;
         margin: 0;
     }
@@ -153,18 +243,68 @@
     .links a {
         color: #e5e7eb;
         text-decoration: none;
-        transition: color 0.3s;
+        transition: all 0.3s ease;
         display: flex;
         align-items: center;
         gap: 10px;
         font-size: 0.95rem;
     }
 
-    .links a:hover {
-        color: #22d3ee; 
+    @media (hover: hover) and (pointer: fine) {
+        .links a:hover {
+            color: #22d3ee;
+            transform: translateX(4px);
+        }
     }
 
-    /* DATOS DE CONTACTO */
+    .links a:active {
+        color: #22d3ee;
+    }
+
+    .horarios-mini {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .horarios-mini li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 14px;
+        background-color: rgba(255, 255, 255, 0.03);
+        border-left: 2px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        transition: border-color 0.3s ease, background-color 0.3s ease;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+        .horarios-mini li:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-left-color: #22d3ee;
+        }
+    }
+
+    .horarios-mini li.destacado-mini {
+        border-left-color: #22d3ee;
+        background-color: rgba(34, 211, 238, 0.06);
+    }
+
+    .dia-mini {
+        color: #e5e7eb;
+        font-size: 0.9rem;
+        font-weight: 600;
+    }
+
+    .hora-mini-footer {
+        color: #22d3ee;
+        font-size: 0.85rem;
+        font-weight: 700;
+    }
+
     .contact-info {
         list-style: none;
         padding: 0;
@@ -184,14 +324,15 @@
         font-size: 1.2rem;
     }
 
-    /* BARRA FINAL */
     .barra-final {
-        background-color: #000000; /* Negro puro para la base */
+        position: relative;
+        z-index: 2;
+        background-color: #000000;
         padding: 25px 20px;
         text-align: center;
         font-size: 0.85rem;
         color: #6b7280;
-        border-top: 1px solid #1f2937;
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
     }
 
     .barra-final p {
@@ -199,23 +340,41 @@
     }
 
     .dev-link {
-        color: #22d3ee; 
+        color: #22d3ee;
         text-decoration: none;
         font-weight: bold;
         transition: all 0.3s ease;
     }
 
-    .dev-link:hover {
+    @media (hover: hover) and (pointer: fine) {
+        .dev-link:hover {
+            color: white;
+            text-decoration: underline;
+        }
+    }
+
+    .dev-link:active {
         color: white;
-        text-decoration: underline;
     }
 
     .corazon {
-        color: #ef4444; 
+        color: #ef4444;
     }
 
-    /* RESPONSIVE */
     @media (max-width: 768px) {
+        footer {
+            padding-top: 45px;
+        }
+
+        .footer-wave svg {
+            height: 35px;
+        }
+
+        .footer-glow {
+            width: 400px;
+            height: 220px;
+        }
+
         .footer-container {
             flex-direction: column;
             gap: 40px;

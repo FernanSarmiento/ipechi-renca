@@ -8,7 +8,7 @@
 
     <div class="datos-grid">
       
-      <div class="dato-item">
+      <div class="dato-item reveal">
         <div class="icon-wrapper wapp-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9"></path>
@@ -22,7 +22,7 @@
         </a>
       </div>
 
-      <div class="dato-item">
+      <div class="dato-item reveal" style="transition-delay: 0.15s;">
         <div class="icon-wrapper mail-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="3" y="5" width="18" height="14" rx="2" ry="2"></rect>
@@ -44,7 +44,7 @@
 <style>
   #contacto {
     padding: 100px 20px;
-    background-color: transparent; /* Hereda el fondo oscuro global */
+    background-color: transparent;
     text-align: center;
   }
 
@@ -76,7 +76,6 @@
     text-transform: uppercase;
   }
 
-  /* LA GRILLA DE CONTACTOS */
   .datos-grid {
     display: flex;
     justify-content: center;
@@ -84,7 +83,6 @@
     flex-wrap: wrap; 
   }
 
-  /* TARJETAS DE CRISTAL */
   .dato-item {
     background-color: rgba(30, 41, 59, 0.4); 
     backdrop-filter: blur(10px);
@@ -100,12 +98,13 @@
     align-items: center;
   }
 
-  .dato-item:hover {
-    transform: translateY(-5px);
-    border-color: rgba(255,255,255,0.2);
+  @media (hover: hover) and (pointer: fine) {
+    .dato-item:hover {
+      transform: translateY(-5px);
+      border-color: rgba(255,255,255,0.2);
+    }
   }
 
-  /* CONTENEDOR DE ICONOS */
   .icon-wrapper {
       padding: 15px;
       border-radius: 50%;
@@ -143,7 +142,6 @@
     font-weight: 500;
   }
 
-  /* BOTONES NEÓN */
   .btn-neon-wapp, .btn-neon-mail {
     display: inline-block;
     background-color: transparent;
@@ -158,33 +156,46 @@
     box-sizing: border-box;
   }
 
-  /* WhatsApp Neón */
   .btn-neon-wapp {
     color: #25D366;
     border: 2px solid #25D366;
   }
 
-  .btn-neon-wapp:hover {
-    background-color: #25D366;
-    color: #0f172a;
-    box-shadow: 0 0 20px rgba(37, 211, 102, 0.5);
-    transform: scale(1.05);
+  @media (hover: hover) and (pointer: fine) {
+    .btn-neon-wapp:hover {
+      background-color: #25D366;
+      color: #0f172a;
+      box-shadow: 0 0 20px rgba(37, 211, 102, 0.5);
+      transform: scale(1.05);
+    }
   }
 
-  /* Correo Neón */
+  .btn-neon-wapp:active {
+    background-color: #25D366;
+    color: #0f172a;
+    transform: scale(0.98);
+  }
+
   .btn-neon-mail {
     color: #22d3ee;
     border: 2px solid #22d3ee;
   }
 
-  .btn-neon-mail:hover {
-    background-color: #22d3ee;
-    color: #0f172a;
-    box-shadow: 0 0 20px rgba(34, 211, 238, 0.5);
-    transform: scale(1.05);
+  @media (hover: hover) and (pointer: fine) {
+    .btn-neon-mail:hover {
+      background-color: #22d3ee;
+      color: #0f172a;
+      box-shadow: 0 0 20px rgba(34, 211, 238, 0.5);
+      transform: scale(1.05);
+    }
   }
 
-  /* CELULAR */
+  .btn-neon-mail:active {
+    background-color: #22d3ee;
+    color: #0f172a;
+    transform: scale(0.98);
+  }
+
   @media (max-width: 768px) {
     #contacto { padding: 60px 10px; }
     h2 { font-size: 2.2rem; }

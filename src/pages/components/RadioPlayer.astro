@@ -1,0 +1,288 @@
+<div class="radio-player" id="radio-player">
+
+	<button type="button" class="radio-toggle" id="radio-toggle" aria-label="Abrir reproductor de radio">
+		<span class="radio-icono">
+			<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+				<circle cx="12" cy="12" r="2" />
+				<path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-8.49a6 6 0 0 0 0 8.49m11.31-11.31a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14" />
+			</svg>
+		</span>
+		<span class="radio-ecualizador" id="radio-ecualizador">
+			<span></span><span></span><span></span>
+		</span>
+		<span class="radio-punto-vivo"></span>
+	</button>
+
+	<div class="radio-panel" id="radio-panel">
+		<button type="button" class="radio-play-pause" id="radio-play-pause" aria-label="Reproducir">
+			<svg id="icono-play" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
+			<svg id="icono-pause" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="display:none"><path d="M6 5h4v14H6zm8 0h4v14h-4z" /></svg>
+		</button>
+
+		<div class="radio-info">
+			<span class="radio-nombre">Conquista FM</span>
+			<span class="radio-en-vivo"><span class="dot-pulso"></span> EN VIVO</span>
+		</div>
+
+		<button type="button" class="radio-minimizar" id="radio-minimizar" aria-label="Minimizar reproductor">
+			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6" /></svg>
+		</button>
+	</div>
+
+	<audio id="radio-audio" preload="none" src="https://club.asdmedios.cl/radio/8170//radio.mp3"></audio>
+</div>
+
+<style>
+	.radio-player {
+		position: fixed;
+		bottom: 30px;
+		left: 30px;
+		z-index: 200;
+		display: flex;
+		align-items: center;
+	}
+
+	.radio-toggle {
+		position: relative;
+		flex-shrink: 0;
+		width: 48px;
+		height: 48px;
+		border-radius: 50%;
+		border: 2px solid #22d3ee;
+		background-color: rgba(5, 5, 5, 0.7);
+		backdrop-filter: blur(6px);
+		color: #22d3ee;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		transition: box-shadow 0.3s ease, background-color 0.3s ease;
+	}
+
+	@media (hover: hover) and (pointer: fine) {
+		.radio-toggle:hover {
+			background-color: #22d3ee;
+			color: #0f172a;
+			box-shadow: 0 0 20px rgba(34, 211, 238, 0.5);
+		}
+	}
+
+	.radio-toggle:active {
+		transform: scale(0.92);
+	}
+
+	.radio-punto-vivo {
+		position: absolute;
+		top: 4px;
+		right: 4px;
+		width: 9px;
+		height: 9px;
+		border-radius: 50%;
+		background-color: #ef4444;
+		box-shadow: 0 0 8px rgba(239, 68, 68, 0.7);
+		animation: pulso-vivo 1.6s ease-in-out infinite;
+	}
+
+	.radio-ecualizador {
+		display: none;
+		align-items: flex-end;
+		gap: 2px;
+		height: 16px;
+	}
+
+	.radio-ecualizador span {
+		width: 3px;
+		background-color: currentColor;
+		border-radius: 2px;
+		animation: rebote-barra 0.9s ease-in-out infinite;
+	}
+
+	.radio-ecualizador span:nth-child(1) { height: 40%; animation-delay: 0s; }
+	.radio-ecualizador span:nth-child(2) { height: 100%; animation-delay: 0.2s; }
+	.radio-ecualizador span:nth-child(3) { height: 65%; animation-delay: 0.4s; }
+
+	.radio-toggle.sonando .radio-icono {
+		display: none;
+	}
+
+	.radio-toggle.sonando .radio-ecualizador {
+		display: flex;
+	}
+
+	@keyframes rebote-barra {
+		0%, 100% { transform: scaleY(0.4); }
+		50% { transform: scaleY(1); }
+	}
+
+	@keyframes pulso-vivo {
+		0%, 100% { transform: scale(1); opacity: 1; }
+		50% { transform: scale(1.3); opacity: 0.6; }
+	}
+
+	.radio-panel {
+		display: flex;
+		align-items: center;
+		gap: 14px;
+		max-width: 0;
+		overflow: hidden;
+		opacity: 0;
+		margin-left: 0;
+		padding: 0;
+		border-radius: 50px;
+		background-color: rgba(30, 41, 59, 0.6);
+		backdrop-filter: blur(10px);
+		border: 1px solid rgba(255,255,255,0.08);
+		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+		transition: max-width 0.35s ease, opacity 0.25s ease, margin-left 0.35s ease, padding 0.35s ease;
+		white-space: nowrap;
+	}
+
+	.radio-panel.abierto {
+		max-width: 280px;
+		opacity: 1;
+		margin-left: 14px;
+		padding: 8px 10px 8px 8px;
+	}
+
+	.radio-play-pause {
+		flex-shrink: 0;
+		width: 36px;
+		height: 36px;
+		border-radius: 50%;
+		border: none;
+		background-color: #22d3ee;
+		color: #0f172a;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		transition: transform 0.2s ease, box-shadow 0.3s ease;
+	}
+
+	@media (hover: hover) and (pointer: fine) {
+		.radio-play-pause:hover {
+			transform: scale(1.08);
+			box-shadow: 0 0 15px rgba(34, 211, 238, 0.5);
+		}
+	}
+
+	.radio-play-pause:active {
+		transform: scale(0.92);
+	}
+
+	.radio-info {
+		display: flex;
+		flex-direction: column;
+		gap: 2px;
+	}
+
+	.radio-nombre {
+		color: #ffffff;
+		font-size: 0.9rem;
+		font-weight: 700;
+	}
+
+	.radio-en-vivo {
+		display: flex;
+		align-items: center;
+		gap: 6px;
+		color: #94a3b8;
+		font-size: 0.7rem;
+		font-weight: 700;
+		letter-spacing: 0.5px;
+	}
+
+	.dot-pulso {
+		width: 6px;
+		height: 6px;
+		border-radius: 50%;
+		background-color: #ef4444;
+		box-shadow: 0 0 6px rgba(239, 68, 68, 0.7);
+		animation: pulso-vivo 1.6s ease-in-out infinite;
+	}
+
+	.radio-minimizar {
+		flex-shrink: 0;
+		width: 26px;
+		height: 26px;
+		border-radius: 50%;
+		border: none;
+		background-color: rgba(255,255,255,0.06);
+		color: #94a3b8;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		transition: all 0.3s ease;
+	}
+
+	@media (hover: hover) and (pointer: fine) {
+		.radio-minimizar:hover {
+			background-color: rgba(255,255,255,0.14);
+			color: #ffffff;
+		}
+	}
+
+	.radio-minimizar:active {
+		background-color: rgba(255,255,255,0.2);
+	}
+
+	@media (max-width: 768px) {
+		.radio-player {
+			bottom: 20px;
+			left: 20px;
+		}
+
+		.radio-toggle {
+			width: 42px;
+			height: 42px;
+		}
+
+		.radio-panel.abierto {
+			max-width: 230px;
+		}
+
+		.radio-nombre {
+			font-size: 0.8rem;
+		}
+	}
+</style>
+
+<script>
+	const audio = document.getElementById("radio-audio");
+	const toggle = document.getElementById("radio-toggle");
+	const ecualizador = document.getElementById("radio-ecualizador");
+	const panel = document.getElementById("radio-panel");
+	const btnPlayPause = document.getElementById("radio-play-pause");
+	const btnMinimizar = document.getElementById("radio-minimizar");
+	const iconoPlay = document.getElementById("icono-play");
+	const iconoPause = document.getElementById("icono-pause");
+
+	if (audio && toggle && panel && btnPlayPause && btnMinimizar) {
+		function actualizarIconoPlay(reproduciendo) {
+			iconoPlay.style.display = reproduciendo ? "none" : "block";
+			iconoPause.style.display = reproduciendo ? "block" : "none";
+			toggle.classList.toggle("sonando", reproduciendo);
+		}
+
+		function alternarReproduccion() {
+			if (audio.paused) {
+				audio.play().catch(() => {});
+			} else {
+				audio.pause();
+			}
+		}
+
+		toggle.addEventListener("click", () => {
+			const yaAbierto = panel.classList.contains("abierto");
+			panel.classList.toggle("abierto", !yaAbierto);
+		});
+
+		btnPlayPause.addEventListener("click", alternarReproduccion);
+		btnMinimizar.addEventListener("click", () => panel.classList.remove("abierto"));
+
+		audio.addEventListener("playing", () => actualizarIconoPlay(true));
+		audio.addEventListener("pause", () => actualizarIconoPlay(false));
+		audio.addEventListener("waiting", () => actualizarIconoPlay(false));
+	}
+</script>

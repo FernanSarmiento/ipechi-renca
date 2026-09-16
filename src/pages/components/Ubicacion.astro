@@ -4,7 +4,7 @@
       <h2>Nuestra Ubicación</h2>
   </div>
 
-  <div class="contenedor">
+  <div class="contenedor reveal">
     
     <div class="direccion">
       <h3>Visítanos</h3>
@@ -62,14 +62,14 @@
   }
 
   .etiqueta {
-    color: #22d3ee; /* Cyan Neón */
+    color: #22d3ee;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 2px;
     font-size: 0.85rem;
     display: block;
     margin-bottom: 10px;
-    text-shadow: 0 0 10px rgba(34, 211, 238, 0.3); /* Brillo suave */
+    text-shadow: 0 0 10px rgba(34, 211, 238, 0.3);
   }
 
   h2 {
@@ -85,7 +85,6 @@
     display: flex;
     align-items: center;
     gap: 50px;
-    /* Efecto Tarjeta de Cristal (Glassmorphism) */
     background-color: rgba(30, 41, 59, 0.4); 
     backdrop-filter: blur(10px);
     padding: 40px;
@@ -103,8 +102,8 @@
       flex: 1.5; 
       border-radius: 16px; 
       overflow: hidden; 
-      border: 2px solid #22d3ee; /* Borde Cyan */
-      box-shadow: 0 0 25px rgba(34, 211, 238, 0.15); /* Resplandor */
+      border: 2px solid #22d3ee;
+      box-shadow: 0 0 25px rgba(34, 211, 238, 0.15);
   }
 
   .mapa-iframe {
@@ -114,7 +113,7 @@
   }
 
   .direccion h3 {
-    color: #94a3b8; /* Gris claro */
+    color: #94a3b8;
     text-transform: uppercase;
     font-size: 0.9rem;
     letter-spacing: 2px;
@@ -181,11 +180,19 @@
       border: 2px solid #22d3ee;
   }
 
-  .btn-maps:hover {
+  @media (hover: hover) and (pointer: fine) {
+    .btn-maps:hover {
+        background-color: #22d3ee;
+        color: #0f172a;
+        box-shadow: 0 0 20px rgba(34, 211, 238, 0.5);
+        transform: scale(1.05);
+    }
+  }
+
+  .btn-maps:active {
       background-color: #22d3ee;
       color: #0f172a;
-      box-shadow: 0 0 20px rgba(34, 211, 238, 0.5);
-      transform: scale(1.05);
+      transform: scale(0.97);
   }
 
   .btn-waze {
@@ -193,14 +200,21 @@
       border: 2px solid #7dd3fc;
   }
 
-  .btn-waze:hover {
-      background-color: #7dd3fc;
-      color: #0f172a;
-      box-shadow: 0 0 20px rgba(125, 211, 252, 0.5);
-      transform: scale(1.05);
+  @media (hover: hover) and (pointer: fine) {
+    .btn-waze:hover {
+        background-color: #7dd3fc;
+        color: #0f172a;
+        box-shadow: 0 0 20px rgba(125, 211, 252, 0.5);
+        transform: scale(1.05);
+    }
   }
 
-  /* MODO CELULAR */
+  .btn-waze:active {
+      background-color: #7dd3fc;
+      color: #0f172a;
+      transform: scale(0.97);
+  }
+
   @media (max-width: 768px) {
     .contenedor {
       flex-direction: column; 
