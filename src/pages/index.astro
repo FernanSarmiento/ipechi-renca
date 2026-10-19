@@ -10,6 +10,7 @@ import Contacto from "./components/Contacto.astro";
 import Nosotros from "./components/Nosotros.astro";
 import BotonArriba from "./components/BotonArriba.astro";
 import RadioPlayer from "./components/RadioPlayer.astro";
+import EnVivo from "./components/EnVivo.astro";
 
 const titulo = "Iglesia Pentecostal de Chile - Renca";
 const descripcion = "Una iglesia de puertas abiertas en Los Guindos, Renca. Conoce nuestros horarios de culto, nuestra historia y súmate a nuestra comunidad de fe.";
@@ -67,6 +68,7 @@ const GA_MEASUREMENT_ID = import.meta.env.GA_MEASUREMENT_ID;
 			  <div class="hero-buttons">
 				  <a href="#horarios" class="btn-outline">Ver Horarios</a>
 				  <a href="#ubicacion" class="btn-outline">Cómo Llegar</a>
+				  <a href="#en-vivo" id="hero-en-vivo" class="btn-outline btn-en-vivo" hidden>🔴 En vivo ahora</a>
 			  </div>
 			  <div class="hero-social">
 				  <a href="https://www.facebook.com/IpechiRencaOficial/" target="_blank" aria-label="Facebook">
@@ -84,6 +86,7 @@ const GA_MEASUREMENT_ID = import.meta.env.GA_MEASUREMENT_ID;
 			  </div>
 		</div>
 
+    <EnVivo />
     <Horarios />
     <Ubicacion />
     <Nosotros />
@@ -189,6 +192,23 @@ const GA_MEASUREMENT_ID = import.meta.env.GA_MEASUREMENT_ID;
     background-color: #22d3ee;
     color: #0f172a;
     transform: scale(0.97);
+  }
+
+  .btn-en-vivo {
+    color: #fff;
+    background-color: #ef4444;
+    border-color: #ef4444;
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.5);
+  }
+  .btn-en-vivo[hidden] { display: none; }
+
+  @media (hover: hover) and (pointer: fine) {
+    .btn-outline.btn-en-vivo:hover {
+      background-color: #dc2626;
+      border-color: #dc2626;
+      color: #fff;
+      box-shadow: 0 0 28px rgba(239, 68, 68, 0.7);
+    }
   }
 
   .hero-social {
